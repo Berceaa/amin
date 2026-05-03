@@ -4,6 +4,8 @@ import PawTrail from '../components/PawTrail';
 import { useCart } from '../context/CartContext';
 import { useI18n } from '../context/I18nContext';
 import { useAuth } from '../context/AuthContext';
+import { api } from '../api/client';
+
 import {
   normalizeSpaces,
   validateEmail,
@@ -119,7 +121,7 @@ export default function CheckoutPage() {
     setErrors(validateForm(form));
   };
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     setSubmitError('');
 
@@ -151,9 +153,19 @@ export default function CheckoutPage() {
       notes: current.notes.trim(),
     }));
 
-    setOrderPlaced(true);
-    clearCart();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (subtotal < 300) {
+      setSubmitError('Minimum order amount is 300 lei.');
+      return;
+    }
+
+    try {
+      await api.checkout(form.email.trim());
+      setOrderPlaced(true);
+      await clearCart();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Unable to place order.');
+    }
   };
 
   if (!user) {

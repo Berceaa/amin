@@ -176,7 +176,7 @@ export default function AuthPage() {
     setRegisterErrors(validateRegisterForm(registerForm));
   };
 
-  const handleLogin = (event: FormEvent) => {
+  const handleLogin = async (event: FormEvent) => {
     event.preventDefault();
     setError('');
     setMessage('');
@@ -189,7 +189,7 @@ export default function AuthPage() {
       return;
     }
 
-    const result = login({
+    const result = await login({
       name: normalizeSpaces(loginForm.name),
       password: loginForm.password,
     });
@@ -203,7 +203,7 @@ export default function AuthPage() {
     navigate('/checkout');
   };
 
-  const handleRegister = (event: FormEvent) => {
+  const handleRegister = async (event: FormEvent) => {
     event.preventDefault();
     setError('');
     setMessage('');
@@ -224,7 +224,7 @@ export default function AuthPage() {
       return;
     }
 
-    const result = register({
+    const result = await register({
       name: normalizeSpaces(registerForm.name),
       email: registerForm.email.trim(),
       phone: registerForm.phone.trim(),

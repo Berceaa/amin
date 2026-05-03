@@ -6,6 +6,7 @@ import ContactPage from './Contact';
 import { HowToPurchasePage, TransportDeliveryPage, ContactUsPage } from './InfoPages';
 import CheckoutPage from './Checkout';
 import AuthPage from './Auth';
+import AdminPage from './Admin';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/login" element={<AuthPage />} />
         <Route path="/register" element={<AuthPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Route>
     </Routes>
   );

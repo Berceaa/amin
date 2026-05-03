@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { normalizeSpaces } from '../utils/validation';
+import { api, type AuthUser } from '../api/client';
 
 type RegisteredUser = {
   name: string;
@@ -10,7 +10,10 @@ type RegisteredUser = {
   password: string;
 };
 
-type PublicUser = Omit<RegisteredUser, 'password'>;
+type PublicUser = Omit<RegisteredUser, 'password'> & {
+  id?: number;
+  role: string;
+};
 
 type LoginInput = {
   name: string;
@@ -19,39 +22,38 @@ type LoginInput = {
 
 type RegisterInput = RegisteredUser;
 
+type AuthResult = {
+  ok: boolean;
+  message?: string;
+};
+
 type AuthContextValue = {
   user: PublicUser | null;
-  register: (data: RegisterInput) => { ok: boolean; message?: string };
-  login: (data: LoginInput) => { ok: boolean; message?: string };
+  register: (data: RegisterInput) => Promise<AuthResult>;
+  login: (data: LoginInput) => Promise<AuthResult>;
   logout: () => void;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
 
-const USERS_KEY = 'pawsentials-users';
 const CURRENT_USER_KEY = 'pawsentials-current-user';
 
-function readUsers(): RegisteredUser[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    return JSON.parse(window.localStorage.getItem(USERS_KEY) || '[]') as RegisteredUser[];
-  } catch {
-    return [];
-  }
-}
-
-function writeUsers(users: RegisteredUser[]) {
-  window.localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
-
-function sanitize(user: RegisteredUser): PublicUser {
-  const { password: _password, ...rest } = user;
-  return rest;
+function toPublicUser(apiUser: AuthUser, extra?: Partial<PublicUser>): PublicUser {
+  return {
+    id: apiUser.id,
+    name: extra?.name || apiUser.email,
+    email: apiUser.email,
+    phone: extra?.phone || '',
+    company: extra?.company || '',
+    taxNumber: extra?.taxNumber || '',
+    role: apiUser.role,
+  };
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<PublicUser | null>(() => {
     if (typeof window === 'undefined') return null;
+
     try {
       return JSON.parse(window.localStorage.getItem(CURRENT_USER_KEY) || 'null') as PublicUser | null;
     } catch {
@@ -69,43 +71,44 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<AuthContextValue>(() => ({
     user,
-    register: (data) => {
-      const users = readUsers();
-      const normalizedData = {
-        ...data,
-        name: normalizeSpaces(data.name),
-        email: data.email.trim().toLowerCase(),
-        phone: data.phone.trim(),
-        company: normalizeSpaces(data.company),
-        taxNumber: normalizeSpaces(data.taxNumber),
-      };
 
-      const exists = users.some(
-        (item) => item.email.toLowerCase() === normalizedData.email || item.name.toLowerCase() === normalizedData.name.toLowerCase(),
-      );
+    register: async (data) => {
+      try {
+        const apiUser = await api.register(data.email.trim().toLowerCase(), data.password);
+        setUser(toPublicUser(apiUser, {
+          name: data.name,
+          phone: data.phone,
+          company: data.company,
+          taxNumber: data.taxNumber,
+        }));
 
-      if (exists) {
-        return { ok: false, message: 'User already exists.' };
+        return { ok: true };
+      } catch (error) {
+        return {
+          ok: false,
+          message: error instanceof Error ? error.message : 'Unable to register.',
+        };
       }
-
-      users.push(normalizedData);
-      writeUsers(users);
-      setUser(sanitize(normalizedData));
-      return { ok: true };
     },
-    login: ({ name, password }) => {
-      const normalizedName = normalizeSpaces(name).toLowerCase();
-      const found = readUsers().find(
-        (item) => item.name.toLowerCase() === normalizedName && item.password === password,
-      );
 
-      if (!found) {
-        return { ok: false, message: 'Invalid credentials.' };
+    login: async ({ name, password }) => {
+      try {
+        /*
+          Your frontend form says "name", but the backend logs in with email.
+          So for now, type the email into the login name field.
+        */
+        const apiUser = await api.login(name.trim().toLowerCase(), password);
+        setUser(toPublicUser(apiUser));
+
+        return { ok: true };
+      } catch (error) {
+        return {
+          ok: false,
+          message: error instanceof Error ? error.message : 'Invalid credentials.',
+        };
       }
-
-      setUser(sanitize(found));
-      return { ok: true };
     },
+
     logout: () => setUser(null),
   }), [user]);
 
@@ -114,6 +117,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
+
   if (!context) {
     throw new Error('useAuth must be used inside AuthProvider');
   }

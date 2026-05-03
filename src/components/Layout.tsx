@@ -9,7 +9,11 @@ import { useI18n } from '../context/I18nContext';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
-const categoryKeys = ['dogs', 'cats', 'smallPets', 'fish', 'birds'] as const;
+const categoryLinks = [
+  { label: 'Dogs', value: 'Dogs' },
+  { label: 'Cats', value: 'Cats' },
+  { label: 'Cats & Dogs', value: 'Cats & Dogs' },
+];
 
 export default function Layout() {
   const { t } = useI18n();
@@ -37,15 +41,36 @@ export default function Layout() {
           </div>
 
           <nav className="hidden items-center gap-2 lg:flex">
-            <NavLink className={navClassName} to="/products">{t('nav.products') as string}</NavLink>
-            <NavLink className={navClassName} to="/contact-us">{t('nav.contactUs') as string}</NavLink>
+            <NavLink className={navClassName} to="/products">
+              {t('nav.products') as string}
+            </NavLink>
+
+            <NavLink className={navClassName} to="/contact-us">
+              {t('nav.contactUs') as string}
+            </NavLink>
+
             {user ? (
-              <NavLink className={navClassName} to="/login">{t('nav.account') as string}</NavLink>
+                <>
+                  <NavLink className={navClassName} to="/login">
+                    {t('nav.account') as string}
+                  </NavLink>
+
+                  {user.role?.toLowerCase() === 'admin' && (
+                      <NavLink className={navClassName} to="/admin">
+                        Admin
+                      </NavLink>
+                  )}
+                </>
             ) : (
-              <>
-                <NavLink className={navClassName} to="/login">{t('nav.login') as string}</NavLink>
-                <NavLink className={navClassName} to="/register">{t('nav.register') as string}</NavLink>
-              </>
+                <>
+                  <NavLink className={navClassName} to="/login">
+                    {t('nav.login') as string}
+                  </NavLink>
+
+                  <NavLink className={navClassName} to="/register">
+                    {t('nav.register') as string}
+                  </NavLink>
+                </>
             )}
           </nav>
 
@@ -76,14 +101,14 @@ export default function Layout() {
         <div className="border-t border-orange-100 bg-[#fffaf6]">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-6">
             <span className="mr-2 text-xs font-bold uppercase tracking-[0.18em] text-[#f27128]">{t('nav.categories') as string}</span>
-            {categoryKeys.map((item) => (
-              <Link
-                key={item}
-                to={`/products?category=${encodeURIComponent(t(`nav.${item}`) as string)}`}
-                className="page-link wag-hover rounded-full border border-orange-100 bg-white px-3 py-1.5 text-sm text-slate-700 transition hover:border-orange-300 hover:text-[#f27128]"
-              >
-                {t(`nav.${item}`) as string}
-              </Link>
+            {categoryLinks.map((item) => (
+                <Link
+                    key={item.value}
+                    to={`/products?category=${encodeURIComponent(item.value)}`}
+                    className="page-link wag-hover rounded-full border border-orange-100 bg-white px-3 py-1.5 text-sm text-slate-700 transition hover:border-orange-300 hover:text-[#f27128]"
+                >
+                  {item.label}
+                </Link>
             ))}
           </div>
         </div>
