@@ -60,6 +60,36 @@ export type BackendOrder = {
 
 const API_BASE = '/api';
 
+const PRODUCT_IMAGE_FALLBACK =
+    'data:image/svg+xml;utf8,' +
+    encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420">
+            <rect width="600" height="420" rx="28" fill="#fff4ec"/>
+            <text x="50%" y="46%" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="700" fill="#f27128">🐾</text>
+            <text x="50%" y="60%" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#f27128">Pet Product</text>
+        </svg>
+    `);
+
+export function normalizeImageUrl(imageUrl?: string | null) {
+    const value = imageUrl?.trim();
+
+    if (!value) {
+        return PRODUCT_IMAGE_FALLBACK;
+    }
+
+    if (/^(https?:|data:|blob:)/i.test(value)) {
+        return value;
+    }
+
+    if (value.startsWith('/api/')) {
+        return value;
+    }
+
+    const cleanPath = value.startsWith('/') ? value : `/${value}`;
+    return `/api${cleanPath}`;
+}
+
+
 async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
     const response = await fetch(`${API_BASE}${url}`, {
         ...options,
@@ -94,7 +124,7 @@ export function mapProduct(product: BackendProduct): FrontendProduct {
         price: `${product.price.toFixed(2)} lei`,
         priceValue: product.price,
         description: product.productSubCategory.replaceAll('_', ' ').toLowerCase(),
-        image: product.imageUrl || 'https://placehold.co/600x420/fff4ec/f27128?text=Pet+Product',
+        image: normalizeImageUrl(product.imageUrl),
         tag: product.productSubCategory.replaceAll('_', ' '),
         stock: product.stock,
     };

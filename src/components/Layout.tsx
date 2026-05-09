@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -22,14 +23,24 @@ export default function Layout() {
   const promo = t('promo') as string;
   const searchPlaceholder = t('nav.search') as string;
   const location = useLocation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="premium-shell min-h-screen bg-[#fffaf6] text-slate-900 lg:pl-72">
-      <Sidebar />
+      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
       <div className="premium-promo bg-[#f27128] px-4 py-2 text-center text-sm font-medium text-white">{promo}</div>
 
       <header className="sticky top-0 z-40 border-b border-orange-100 bg-white/85 backdrop-blur-xl shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-4 py-4 lg:px-6">
+          <button
+            type="button"
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open menu"
+            className="rounded-full border border-orange-200 bg-white px-3 py-2 text-xl shadow-sm transition hover:border-orange-300 hover:text-[#f27128] lg:hidden"
+          >
+            ☰
+          </button>
+
           <Link to="/" className="premium-logo-glow wag-hover flex items-center gap-3">
             <img src={logo} alt="Pawsentials" className="h-10 w-auto" />
           </Link>
