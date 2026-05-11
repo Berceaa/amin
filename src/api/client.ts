@@ -60,6 +60,44 @@ export type BackendOrder = {
 
 const API_BASE = '/api';
 
+const PRODUCT_IMAGE_FALLBACK =
+    'data:image/svg+xml;utf8,' +
+    encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="420" viewBox="0 0 600 420">
+            <rect width="600" height="420" rx="28" fill="#fff4ec"/>
+            <text x="50%" y="43%" text-anchor="middle" font-family="Arial, sans-serif" font-size="54" font-weight="700" fill="#f27128">🐾</text>
+            <text x="50%" y="60%" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#f27128">Pet Product</text>
+        </svg>
+    `);
+
+function normalizeImageUrl(imageUrl?: string | null) {
+    const value = imageUrl?.trim();
+
+    if (!value) {
+        return PRODUCT_IMAGE_FALLBACK;
+    }
+
+    const imgurMatch = value.match(/^https?:\/\/imgur\.com\/([a-zA-Z0-9]+)$/i);
+    if (imgurMatch) {
+        return `https://i.imgur.com/${imgurMatch[1]}.jpg`;
+    }
+
+    if (/^https?:\/\/i\.imgur\.com\/[a-zA-Z0-9]+$/i.test(value)) {
+        return `${value}.jpg`;
+    }
+
+    if (/^(https?:|data:|blob:)/i.test(value)) {
+        return value;
+    }
+
+    if (value.startsWith('/api/')) {
+        return value;
+    }
+
+    const cleanPath = value.startsWith('/') ? value : `/${value}`;
+    return `/api${cleanPath}`;
+}
+
 async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
     const response = await fetch(`${API_BASE}${url}`, {
         ...options,
@@ -85,17 +123,19 @@ export function mapProduct(product: BackendProduct): FrontendProduct {
         CAT_AND_DOG: 'Cats & Dogs',
     };
 
+    const subCategory = product.productSubCategory || '';
+
     return {
         id: product.productId,
         productCode: product.productCode,
         title: product.productName,
         category: categoryMap[product.productCategory],
-        subCategory: product.productSubCategory,
-        price: `${product.price.toFixed(2)} lei`,
-        priceValue: product.price,
-        description: product.productSubCategory.replaceAll('_', ' ').toLowerCase(),
-        image: product.imageUrl || 'https://placehold.co/600x420/fff4ec/f27128?text=Pet+Product',
-        tag: product.productSubCategory.replaceAll('_', ' '),
+        subCategory,
+        price: `${Number(product.price).toFixed(2)} lei`,
+        priceValue: Number(product.price),
+        description: subCategory.replaceAll('_', ' ').toLowerCase(),
+        image: normalizeImageUrl(product.imageUrl),
+        tag: subCategory.replaceAll('_', ' '),
         stock: product.stock,
     };
 }
