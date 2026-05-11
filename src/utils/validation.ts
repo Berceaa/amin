@@ -6,7 +6,7 @@ const NAME_ALLOWED_REGEX = /^[A-Za-zÀ-ÖØ-öø-ÿĀ-ž\s'.-]+$/u;
 const TAX_ALLOWED_REGEX = /^[A-Za-z0-9\-/.\s]{5,25}$/;
 
 export type RegisterField = 'name' | 'email' | 'phone' | 'company' | 'taxNumber' | 'password' | 'confirmPassword';
-export type LoginField = 'name' | 'password';
+export type LoginField = 'email' | 'password';
 export type CheckoutField = 'firstName' | 'lastName' | 'email' | 'phone' | 'pickupStore' | 'pickupPerson' | 'notes';
 
 export const PASSWORD_RULES = {

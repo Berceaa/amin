@@ -16,7 +16,7 @@ type PublicUser = Omit<RegisteredUser, 'password'> & {
 };
 
 type LoginInput = {
-  name: string;
+  email: string;
   password: string;
 };
 
@@ -25,6 +25,7 @@ type RegisterInput = RegisteredUser;
 type AuthResult = {
   ok: boolean;
   message?: string;
+  user?: PublicUser;
 };
 
 type AuthContextValue = {
@@ -46,7 +47,7 @@ function toPublicUser(apiUser: AuthUser, extra?: Partial<PublicUser>): PublicUse
     phone: extra?.phone || '',
     company: extra?.company || '',
     taxNumber: extra?.taxNumber || '',
-    role: apiUser.role,
+    role: String(apiUser.role || '').toLowerCase(),
   };
 }
 
@@ -75,14 +76,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     register: async (data) => {
       try {
         const apiUser = await api.register(data.email.trim().toLowerCase(), data.password);
-        setUser(toPublicUser(apiUser, {
+
+        const publicUser = toPublicUser(apiUser, {
           name: data.name,
           phone: data.phone,
           company: data.company,
           taxNumber: data.taxNumber,
-        }));
+        });
 
-        return { ok: true };
+        setUser(publicUser);
+
+        return { ok: true, user: publicUser };
       } catch (error) {
         return {
           ok: false,
@@ -91,16 +95,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     },
 
-    login: async ({ name, password }) => {
+    login: async ({ email, password }) => {
       try {
-        /*
-          Your frontend form says "name", but the backend logs in with email.
-          So for now, type the email into the login name field.
-        */
-        const apiUser = await api.login(name.trim().toLowerCase(), password);
-        setUser(toPublicUser(apiUser));
+        const apiUser = await api.login(email.trim().toLowerCase(), password);
+        const publicUser = toPublicUser(apiUser);
 
-        return { ok: true };
+        setUser(publicUser);
+
+        return { ok: true, user: publicUser };
       } catch (error) {
         return {
           ok: false,
