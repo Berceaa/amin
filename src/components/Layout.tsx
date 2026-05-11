@@ -157,9 +157,11 @@ export default function Layout() {
             </h3>
 
             <div className="mt-4 space-y-2 text-sm text-slate-600">
-              <p>contact@pawsentials.ro</p>
-              <p>+40 741 000 111</p>
-              <p>Bucharest, Romania</p>
+              <p> E-mail: elworld9999@gmail.com </p>
+              <p>Phone number: 0787807731 </p>
+              <p>Address: Dragonul Rosu 7, Stand Nr.286 </p>
+              <p>Opening hours: Monday - Saturaday, 7am - 2pm </p>
+              <p>WhatsApp: 0787807731</p>
             </div>
           </div>
         </div>

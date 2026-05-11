@@ -35,9 +35,9 @@ const translations: Record<Language, TranslationTree> = {
     },
     hero: {
       eyebrow: 'Magazin premium pentru animale',
-      title: 'Tot ce ai nevoie pentru un animal fericit, într-un design modern inspirat de marile pet stores.',
+      title: 'Bine ați venit la Pawsentials, furnizorul dumneavoastră profesionist en-gros pentru produse esențiale destinate animalelor de companie, specializat într-o gamă variată de produse de zi cu zi pentru câini și pisici — inclusiv jucării, accesorii, hamuri, lese, produse pentru hrănire și hidratare, îmbrăcăminte și culcușuri — concepute pentru a ajuta afacerea dumneavoastră să ofere calitate, grijă și confort fiecărui proprietar de animale de companie.',
       description:
-        'Am refăcut experiența Pawsentials într-un stil apropiat de magazinele mari de tip Petco: navigație amplă, colecții rapide, promoții, servicii și mult accent pe cumpărare rapidă.',
+        '',
       primary: 'Cumpără acum',
       secondary: 'Programează o vizită',
       stats: ['200+ produse', 'Pickup rapid', 'Suport 7 zile'],
@@ -224,9 +224,9 @@ const translations: Record<Language, TranslationTree> = {
     },
     hero: {
       eyebrow: 'Premium pet store',
-      title: 'Everything your pet needs in a modern storefront inspired by leading pet retailers.',
+      title: 'Welcome to Pawsentials, your professional wholesale supplier for pet essentials, specializing in a wide range of everyday products for dogs and cats—including toys, accessories, harness, leashes, feeding and watering supplies, clothing, and bedding—designed to help your business offer quality, care, and convenience to every pet owner.',
       description:
-        'I redesigned Pawsentials with a Petco-inspired feel: expansive navigation, quick collections, strong promo areas, services, and a smoother shopping-first layout.',
+        '',
       primary: 'Shop now',
       secondary: 'Book a visit',
       stats: ['200+ products', 'Fast pickup', 'Support 7 days'],
@@ -413,9 +413,9 @@ const translations: Record<Language, TranslationTree> = {
     },
     hero: {
       eyebrow: 'Premium sklep zoologiczny',
-      title: 'Wszystko, czego potrzebuje Twój pupil, w nowoczesnym sklepie inspirowanym dużymi markami pet retail.',
+      title: 'Witamy w Pawsentials — profesjonalnym hurtowym dostawcy artykułów dla zwierząt, specjalizującym się w szerokiej gamie codziennych produktów dla psów i kotów, w tym zabawek, akcesoriów, szelek, smyczy, artykułów do karmienia i pojenia, odzieży oraz legowisk — zaprojektowanych tak, aby pomóc Twojej firmie oferować jakość, troskę i wygodę każdemu właścicielowi zwierzęcia.',
       description:
-        'Przebudowałem Pawsentials w stylu zbliżonym do Petco: rozbudowana nawigacja, szybkie kolekcje, mocne sekcje promocyjne, usługi i układ nastawiony na zakupy.',
+        '',
       primary: 'Kup teraz',
       secondary: 'Umów wizytę',
       stats: ['200+ produktów', 'Szybki odbiór', 'Wsparcie 7 dni'],
@@ -607,8 +607,8 @@ const translations: Record<Language, TranslationTree> = {
     },
     hero: {
       eyebrow: '高端宠物商店',
-      title: '以现代化宠物零售体验，为你的宠物准备所需的一切。',
-      description: 'Pawsentials 采用大型宠物零售网站风格：清晰导航、快速分类、醒目促销、服务模块与更顺畅的购物流程。',
+      title: '欢迎来到 Pawsentials，我们是专业的宠物用品批发供应商，专注于为猫狗提供各种日常必需品，包括玩具、配件、胸背带、牵引绳、喂食与饮水用品、宠物服饰以及宠物床具，旨在帮助您的企业为每一位宠物主人提供高品质、关怀与便利。',
+      description: '',
       primary: '立即购买',
       secondary: '预约到店',
       stats: ['200+ 产品', '快速自取', '每周 7 天支持'],
@@ -769,39 +769,257 @@ const translations: Record<Language, TranslationTree> = {
 
 const extraTranslations: Record<Language, TranslationTree> = {
   ro: {
-    nav: { home: 'Acasă', howToPurchase: 'Cum cumperi', delivery: 'Transport și condiții de livrare', contactUs: 'Contactează-ne' },
+    nav: {
+      home: 'Acasă',
+      howToPurchase: 'Cum cumperi',
+      delivery: 'Transport și condiții de livrare',
+      contactUs: 'Contactează-ne',
+    },
     infoPages: {
-      purchase: { title: 'Cum cumperi', intro: 'Procesul Pawsentials este simplu și rapid. Alegi produsele, le adaugi în coș și finalizezi comanda cu ridicare din magazin.', stepsTitle: 'Pașii de cumpărare', steps: ['Alege produsele potrivite pentru animalul tău.', 'Adaugă produsele în coș și verifică cantitățile.', 'Autentifică-te sau creează un cont nou.', 'Completează datele pentru ridicare și plasează comanda.', 'Vei primi confirmare, apoi ridici comanda din magazin.'], noteTitle: 'Important', noteText: 'Comenzile sunt disponibile exclusiv cu ridicare din magazin. Plata și confirmarea finală se fac în checkout.' },
-      delivery: { title: 'Transport și condiții de livrare', intro: 'În această versiune, Pawsentials funcționează cu sistem pickup-only pentru a evita costuri inutile și pentru a pregăti comenzile mai rapid.', sections: [{ title: 'Ridicare din magazin', text: 'După plasarea comenzii, echipa verifică stocul și pregătește produsele pentru ridicare.' }, { title: 'Timp de pregătire', text: 'Majoritatea comenzilor pot fi pregătite în aceeași zi lucrătoare sau în maximum 24 de ore.' }, { title: 'Costuri', text: 'Nu există taxă de transport, deoarece comenzile se ridică direct din magazin.' }, { title: 'Confirmare', text: 'Te contactăm prin email sau telefon când comanda este pregătită.' }] },
-      contact: { title: 'Contactează-ne', intro: 'Ai întrebări despre produse, stocuri, comenzi sau colaborări? Echipa Pawsentials îți răspunde rapid.', detailsTitle: 'Date de contact', formTitle: 'Trimite-ne un mesaj', email: 'Email', phone: 'Telefon', address: 'Adresă', hours: 'Program', hoursText: 'Luni - Vineri, 09:00 - 18:00', responseText: 'Răspundem de obicei în aceeași zi lucrătoare.' },
+      purchase: {
+        title: 'Cum cumperi',
+        intro:
+            'Cumpărarea de la Pawsentials este gândită să fie simplă și eficientă. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON. Începe prin a răsfoi produsele disponibile și a selecta articolele care se potrivesc cel mai bine nevoilor animalului tău, apoi adaugă-le în coș și verifică atent cantitățile. În continuare, autentifică-te în contul tău sau creează unul nou dacă nu ai deja. Când ești gata, completează detaliile pentru ridicare și plasează comanda prin checkout, unde poți alege metoda de plată preferată — transfer bancar sau numerar. După trimiterea comenzii, așteaptă confirmarea, apoi ridică produsele direct din magazin. Te rugăm să reții că comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată în checkout; totuși, livrarea poate fi aranjată la cererea clientului și trebuie menționată la plasarea comenzii.',
+        stepsTitle: 'Pașii de cumpărare',
+        steps: [
+          'Alege produsele potrivite pentru animalul tău.',
+          'Adaugă produsele în coș și verifică cantitățile.',
+          'Autentifică-te sau creează un cont nou.',
+          'Completează detaliile de ridicare, alege metoda de plată — transfer bancar sau numerar — și plasează comanda.',
+          'Așteaptă confirmarea, apoi ridică produsele din magazin sau solicită livrare dacă este nevoie.',
+        ],
+        noteTitle: 'Important',
+        noteText:
+            'Comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată la checkout. Pentru întrebări sau asistență, contactează-ne prin WhatsApp sau telefon.',
+      },
+      delivery: {
+        title: 'Transport și condiții de livrare',
+        intro:
+            'Pawsentials funcționează în principal pe un model de ridicare din magazin, pentru a asigura procesarea mai rapidă a comenzilor și costuri mai reduse, iar livrarea poate fi aranjată la cerere dacă este specificată în momentul plasării comenzii. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON, iar platforma este destinată în principal persoanelor juridice. Clienții individuali pot plasa comenzi dacă îndeplinesc valoarea minimă a comenzii sau, alternativ, pot contacta unul dintre distribuitorii noștri. Pentru informații suplimentare, te rugăm să ne contactezi telefonic sau prin formularul de contact disponibil pe website.',
+        sections: [
+          {
+            title: 'Ridicare din magazin',
+            text: 'După plasarea comenzii, echipa noastră va verifica disponibilitatea stocului și va pregăti produsele pentru ridicare.',
+          },
+          {
+            title: 'Timp de pregătire',
+            text: 'Majoritatea comenzilor sunt pregătite în aceeași zi lucrătoare sau în maximum 24 de ore.',
+          },
+          {
+            title: 'Costuri',
+            text: 'Nu există taxe de livrare pentru comenzile cu ridicare din magazin. Dacă se solicită livrare, se pot aplica costuri suplimentare.',
+          },
+          {
+            title: 'Confirmare',
+            text: 'Vei fi contactat prin email sau telefon imediat ce comanda este pregătită pentru ridicare sau expediere.',
+          },
+        ],
+      },
+      contact: {
+        title: 'Contactează-ne',
+        intro:
+            'Ai întrebări despre produse, stocuri, comenzi sau colaborări? Echipa Pawsentials îți răspunde rapid.',
+        detailsTitle: 'Date de contact',
+        formTitle: 'Trimite-ne un mesaj',
+        email: 'Email',
+        phone: 'Telefon',
+        address: 'Adresă',
+        hours: 'Program',
+        hoursText: 'Luni - Vineri, 09:00 - 18:00',
+        responseText: 'Răspundem de obicei în aceeași zi lucrătoare.',
+      },
     },
   },
+
   en: {
-    nav: { home: 'Home', howToPurchase: 'How to purchase', delivery: 'Transport and Delivery condition', contactUs: 'Contact Us' },
+    nav: {
+      home: 'Home',
+      howToPurchase: 'How to purchase',
+      delivery: 'Transport and delivery conditions',
+      contactUs: 'Contact Us',
+    },
     infoPages: {
-      purchase: { title: 'How to purchase', intro: 'Pawsentials keeps ordering simple and fast. Choose products, add them to cart, and complete your pickup-only order at checkout.', stepsTitle: 'Purchase steps', steps: ['Browse products and choose the right items for your pet.', 'Add products to the cart and review quantities.', 'Log in or create a new account.', 'Complete pickup details and place the order.', 'Wait for confirmation, then pick up the order in store.'], noteTitle: 'Important', noteText: 'Orders are available for in-store pickup only. Final confirmation is completed at checkout.' },
-      delivery: { title: 'Transport and Delivery condition', intro: 'Pawsentials currently uses a pickup-only model to keep costs low and prepare orders faster.', sections: [{ title: 'In-store pickup', text: 'After placing the order, our team checks stock and prepares your items for pickup.' }, { title: 'Preparation time', text: 'Most orders can be prepared the same business day or within 24 hours.' }, { title: 'Costs', text: 'There are no delivery costs because orders are collected directly from the store.' }, { title: 'Confirmation', text: 'We contact you by email or phone when your order is ready.' }] },
-      contact: { title: 'Contact Us', intro: 'Have questions about products, stock, orders, or partnerships? The Pawsentials team is ready to help.', detailsTitle: 'Contact details', formTitle: 'Send us a message', email: 'Email', phone: 'Phone', address: 'Address', hours: 'Opening hours', hoursText: 'Monday - Friday, 09:00 - 18:00', responseText: 'We usually reply within the same business day.' },
+      purchase: {
+        title: 'How to purchase',
+        intro:
+            'Purchasing from Pawsentials is designed to be simple and efficient. As a wholesale business, the minimum order value on the site is 300 RON. Start by browsing the available products and selecting the items that best suit your pet’s needs, then add them to your cart and review the quantities. Next, log in to your account or create a new one if you haven’t already. Once ready, complete your pickup details and place the order through the checkout process, where you can choose your preferred payment method — either bank wire or cash. After submitting your order, wait for confirmation, and then collect your items directly from the store. Please note that orders are primarily available for in-store pickup only, with final confirmation completed during checkout; however, a shipping service can be arranged upon customer request and should be noted when placing the order.',
+        stepsTitle: 'Purchase steps',
+        steps: [
+          'Browse products and select the best items for your pet.',
+          'Add products to your cart and review quantities.',
+          'Log in or create your account.',
+          'Complete pickup details, choose your payment method — bank wire or cash — and place the order.',
+          'Wait for confirmation, then pick up your order in store or request shipping if needed.',
+        ],
+        noteTitle: 'Important',
+        noteText:
+            'Orders are primarily available for in-store pickup, with final confirmation completed at checkout. For any questions or assistance, please contact us via WhatsApp or phone.',
+      },
+      delivery: {
+        title: 'Transport and delivery conditions',
+        intro:
+            'Pawsentials operates primarily on a pickup model to ensure faster order processing and lower costs, while shipping can be arranged upon request if specified at the time of ordering. As a wholesale business, the minimum order value on the site is 300 RON, and the platform is mainly intended for legal entities. Individual customers may also place orders if they meet the minimum order requirement, or alternatively, they can contact one of our distributors. For further information, please reach out to us by phone or through the contact form available on our website.',
+        sections: [
+          {
+            title: 'In-store Pickup',
+            text: 'After placing your order, our team will check stock availability and prepare your items for pickup.',
+          },
+          {
+            title: 'Preparation Time',
+            text: 'Most orders are prepared within the same business day or within 24 hours.',
+          },
+          {
+            title: 'Costs',
+            text: 'There are no delivery fees for pickup orders. If shipping is requested, additional costs may apply.',
+          },
+          {
+            title: 'Confirmation',
+            text: 'You will be contacted by email or phone once your order is ready for pickup or dispatch.',
+          },
+        ],
+      },
+      contact: {
+        title: 'Contact Us',
+        intro:
+            'Have questions about products, stock, orders, or partnerships? The Pawsentials team is ready to help.',
+        detailsTitle: 'Contact details',
+        formTitle: 'Send us a message',
+        email: 'Email',
+        phone: 'Phone',
+        address: 'Address',
+        hours: 'Opening hours',
+        hoursText: 'Monday - Friday, 09:00 - 18:00',
+        responseText: 'We usually reply within the same business day.',
+      },
     },
   },
+
   pl: {
-    nav: { home: 'Strona główna', howToPurchase: 'Jak kupić', delivery: 'Warunki transportu i odbioru', contactUs: 'Kontakt' },
+    nav: {
+      home: 'Strona główna',
+      howToPurchase: 'Jak kupić',
+      delivery: 'Warunki transportu i odbioru',
+      contactUs: 'Kontakt',
+    },
     infoPages: {
-      purchase: { title: 'Jak kupić', intro: 'Pawsentials zapewnia prosty i szybki proces zamówienia. Wybierz produkty, dodaj je do koszyka i zakończ zamówienie z odbiorem w sklepie.', stepsTitle: 'Kroki zakupu', steps: ['Przeglądaj produkty i wybierz odpowiednie artykuły dla swojego pupila.', 'Dodaj produkty do koszyka i sprawdź ilości.', 'Zaloguj się lub utwórz nowe konto.', 'Uzupełnij dane odbioru i złóż zamówienie.', 'Poczekaj na potwierdzenie, a następnie odbierz zamówienie w sklepie.'], noteTitle: 'Ważne', noteText: 'Zamówienia są dostępne wyłącznie z odbiorem w sklepie. Finalne potwierdzenie odbywa się w checkout.' },
-      delivery: { title: 'Warunki transportu i odbioru', intro: 'Pawsentials działa obecnie w modelu tylko z odbiorem osobistym, aby ograniczyć koszty i szybciej przygotowywać zamówienia.', sections: [{ title: 'Odbiór w sklepie', text: 'Po złożeniu zamówienia nasz zespół sprawdza stan magazynowy i przygotowuje produkty do odbioru.' }, { title: 'Czas przygotowania', text: 'Większość zamówień może być przygotowana tego samego dnia roboczego lub w ciągu 24 godzin.' }, { title: 'Koszty', text: 'Nie ma kosztów dostawy, ponieważ zamówienia odbiera się bezpośrednio w sklepie.' }, { title: 'Potwierdzenie', text: 'Skontaktujemy się e-mailem lub telefonicznie, gdy zamówienie będzie gotowe.' }] },
-      contact: { title: 'Kontakt', intro: 'Masz pytania o produkty, stany magazynowe, zamówienia lub współpracę? Zespół Pawsentials chętnie pomoże.', detailsTitle: 'Dane kontaktowe', formTitle: 'Wyślij wiadomość', email: 'Email', phone: 'Telefon', address: 'Adres', hours: 'Godziny otwarcia', hoursText: 'Poniedziałek - Piątek, 09:00 - 18:00', responseText: 'Zwykle odpowiadamy tego samego dnia roboczego.' },
+      purchase: {
+        title: 'Jak kupić',
+        intro:
+            'Zakupy w Pawsentials są proste i wygodne. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON. Zacznij od przejrzenia dostępnych produktów i wybierz artykuły najlepiej dopasowane do potrzeb Twojego pupila, następnie dodaj je do koszyka i sprawdź ilości. Kolejnym krokiem jest zalogowanie się na konto lub utworzenie nowego, jeśli jeszcze go nie posiadasz. Gdy wszystko będzie gotowe, uzupełnij dane odbioru i złóż zamówienie w procesie checkout, gdzie możesz wybrać preferowaną metodę płatności — przelew bankowy lub gotówkę. Po wysłaniu zamówienia poczekaj na potwierdzenie, a następnie odbierz produkty bezpośrednio ze sklepu. Pamiętaj, że zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się podczas checkout; jednak wysyłka może zostać zorganizowana na życzenie klienta i powinna zostać zaznaczona przy składaniu zamówienia.',
+        stepsTitle: 'Kroki zakupu',
+        steps: [
+          'Przeglądaj produkty i wybierz najlepsze artykuły dla swojego pupila.',
+          'Dodaj produkty do koszyka i sprawdź ilości.',
+          'Zaloguj się lub utwórz konto.',
+          'Uzupełnij dane odbioru, wybierz metodę płatności — przelew bankowy lub gotówkę — i złóż zamówienie.',
+          'Poczekaj na potwierdzenie, a następnie odbierz zamówienie w sklepie lub poproś o wysyłkę, jeśli jest potrzebna.',
+        ],
+        noteTitle: 'Ważne',
+        noteText:
+            'Zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się przy checkout. W razie pytań lub potrzeby pomocy skontaktuj się z nami przez WhatsApp lub telefon.',
+      },
+      delivery: {
+        title: 'Warunki transportu i odbioru',
+        intro:
+            'Pawsentials działa głównie w modelu odbioru osobistego, aby zapewnić szybszą realizację zamówień i niższe koszty, natomiast wysyłka może zostać zorganizowana na życzenie, jeśli zostanie wskazana podczas składania zamówienia. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON, a platforma jest przeznaczona głównie dla podmiotów prawnych. Klienci indywidualni również mogą składać zamówienia, jeśli spełniają minimalny próg zamówienia, albo mogą skontaktować się z jednym z naszych dystrybutorów. W celu uzyskania dodatkowych informacji prosimy o kontakt telefoniczny lub przez formularz kontaktowy dostępny na naszej stronie.',
+        sections: [
+          {
+            title: 'Odbiór w sklepie',
+            text: 'Po złożeniu zamówienia nasz zespół sprawdzi dostępność produktów i przygotuje je do odbioru.',
+          },
+          {
+            title: 'Czas przygotowania',
+            text: 'Większość zamówień jest przygotowywana tego samego dnia roboczego lub w ciągu 24 godzin.',
+          },
+          {
+            title: 'Koszty',
+            text: 'Nie ma opłat za dostawę przy zamówieniach odbieranych w sklepie. Jeśli zamówiona zostanie wysyłka, mogą obowiązywać dodatkowe koszty.',
+          },
+          {
+            title: 'Potwierdzenie',
+            text: 'Skontaktujemy się z Tobą e-mailem lub telefonicznie, gdy zamówienie będzie gotowe do odbioru albo wysyłki.',
+          },
+        ],
+      },
+      contact: {
+        title: 'Kontakt',
+        intro:
+            'Masz pytania o produkty, stany magazynowe, zamówienia lub współpracę? Zespół Pawsentials chętnie pomoże.',
+        detailsTitle: 'Dane kontaktowe',
+        formTitle: 'Wyślij wiadomość',
+        email: 'Email',
+        phone: 'Telefon',
+        address: 'Adres',
+        hours: 'Godziny otwarcia',
+        hoursText: 'Poniedziałek - Piątek, 09:00 - 18:00',
+        responseText: 'Zwykle odpowiadamy tego samego dnia roboczego.',
+      },
     },
   },
+
   zh: {
-    nav: { home: '首页', howToPurchase: '如何购买', delivery: '运输与取货条件', contactUs: '联系我们' },
+    nav: {
+      home: '首页',
+      howToPurchase: '如何购买',
+      delivery: '运输与取货条件',
+      contactUs: '联系我们',
+    },
     infoPages: {
-      purchase: { title: '如何购买', intro: 'Pawsentials 的订购流程简单快速。选择商品、加入购物车，并在结账页完成门店自取订单。', stepsTitle: '购买步骤', steps: ['浏览产品并选择适合宠物的商品。', '加入购物车并检查数量。', '登录或创建新账户。', '填写取货信息并提交订单。', '等待确认，然后到店取货。'], noteTitle: '重要说明', noteText: '订单仅支持门店自取。最终确认在结账页完成。' },
-      delivery: { title: '运输与取货条件', intro: 'Pawsentials 目前采用仅门店自取模式，以降低成本并更快准备订单。', sections: [{ title: '门店自取', text: '提交订单后，我们会检查库存并准备商品。' }, { title: '准备时间', text: '大多数订单可在同一工作日或 24 小时内准备好。' }, { title: '费用', text: '因为订单直接到店领取，所以没有配送费。' }, { title: '确认通知', text: '订单准备好后，我们会通过邮件或电话联系你。' }] },
-      contact: { title: '联系我们', intro: '有关产品、库存、订单或合作的问题，Pawsentials 团队随时为你提供帮助。', detailsTitle: '联系方式', formTitle: '发送消息', email: '邮箱', phone: '电话', address: '地址', hours: '营业时间', hoursText: '周一至周五，09:00 - 18:00', responseText: '我们通常会在同一工作日回复。' },
+      purchase: {
+        title: '如何购买',
+        intro:
+            '在 Pawsentials 购物的流程简单而高效。作为一家批发业务，本网站的最低订单金额为 300 RON。首先浏览可购买的产品，并选择最适合宠物需求的商品，然后将它们加入购物车并检查数量。接下来，登录你的账户；如果还没有账户，请先创建一个新账户。准备好后，填写取货信息并通过结账流程提交订单，在结账时你可以选择首选付款方式——银行转账或现金。提交订单后，请等待确认，然后直接到店领取商品。请注意，订单主要以到店自取为主，最终确认会在结账过程中完成；不过，如客户需要，也可以安排配送服务，并应在下单时备注说明。',
+        stepsTitle: '购买步骤',
+        steps: [
+          '浏览产品并选择最适合宠物的商品。',
+          '将产品加入购物车并检查数量。',
+          '登录或创建你的账户。',
+          '填写取货信息，选择付款方式——银行转账或现金——并提交订单。',
+          '等待确认，然后到店领取订单；如有需要，也可以申请配送。',
+        ],
+        noteTitle: '重要说明',
+        noteText:
+            '订单主要以到店自取为主，最终确认会在结账时完成。如有任何问题或需要帮助，请通过 WhatsApp 或电话联系我们。',
+      },
+      delivery: {
+        title: '运输与取货条件',
+        intro:
+            'Pawsentials 主要采用到店自取模式，以确保订单处理更快并降低成本；如果客户在下单时注明需要配送，也可以根据要求安排发货。作为一家批发业务，本网站的最低订单金额为 300 RON，并且平台主要面向法人实体。个人客户如果满足最低订单金额要求，也可以下单；或者，他们可以联系我们的任一分销商。有关更多信息，请通过电话或我们网站上的联系表单与我们联系。',
+        sections: [
+          {
+            title: '到店自取',
+            text: '下单后，我们的团队会检查库存情况，并准备好你的商品以供取货。',
+          },
+          {
+            title: '准备时间',
+            text: '大多数订单会在同一工作日或 24 小时内准备完成。',
+          },
+          {
+            title: '费用',
+            text: '自取订单不收取配送费。如果客户要求配送，可能会产生额外费用。',
+          },
+          {
+            title: '确认通知',
+            text: '当你的订单准备好取货或发货时，我们会通过电子邮件或电话联系你。',
+          },
+        ],
+      },
+      contact: {
+        title: '联系我们',
+        intro:
+            '有关产品、库存、订单或合作的问题，Pawsentials 团队随时为你提供帮助。',
+        detailsTitle: '联系方式',
+        formTitle: '发送消息',
+        email: '邮箱',
+        phone: '电话',
+        address: '地址',
+        hours: '营业时间',
+        hoursText: '周一至周五，09:00 - 18:00',
+        responseText: '我们通常会在同一工作日回复。',
+      },
     },
   },
 };
-
 function deepMerge(base: TranslationTree, extra: TranslationTree): TranslationTree {
   const output: TranslationTree = { ...base };
   Object.entries(extra).forEach(([key, value]) => {

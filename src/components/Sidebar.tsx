@@ -70,7 +70,7 @@ export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           ))}
         </nav>
 
-       
+
 
         <div className="mt-auto rounded-[1.5rem] border border-orange-100 bg-[#fffaf6] p-4">
           <p className="text-sm font-black text-slate-900">Pickup only</p>

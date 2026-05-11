@@ -14,15 +14,15 @@ export default function ContactPage() {
           <div className="mt-10 space-y-5 text-sm">
             <div className="rounded-2xl bg-white/12 p-4">
               <p className="font-bold">Email</p>
-              <p className="mt-1">contact@pawsentials.ro</p>
+              <p className="mt-1">elworld9999@gmail.com</p>
             </div>
             <div className="rounded-2xl bg-white/12 p-4">
               <p className="font-bold">Phone</p>
-              <p className="mt-1">+40 741 000 111</p>
+              <p className="mt-1">0787807731</p>
             </div>
             <div className="rounded-2xl bg-white/12 p-4">
               <p className="font-bold">Address</p>
-              <p className="mt-1">Str. Pawsentials 12, Bucharest</p>
+              <p className="mt-1">Dragonul Rosu 7, Stand Nr.286</p>
             </div>
           </div>
         </section>
