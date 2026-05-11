@@ -10,13 +10,7 @@ const items = [
   { to: '/contact-us', key: 'nav.contactUs', icon: '☎️' },
 ];
 
-const categories = [
-  { to: '/products?category=Dogs', key: 'nav.dogs', icon: '🐶' },
-  { to: '/products?category=Cats', key: 'nav.cats', icon: '🐱' },
-  { to: '/products?category=Fish', key: 'nav.fish', icon: '🐠' },
-  { to: '/products?category=Small%20Pets', key: 'nav.smallPets', icon: '🐹' },
-  { to: '/products?category=Birds', key: 'nav.birds', icon: '🦜' },
-];
+
 
 type SidebarProps = {
   isOpen?: boolean;
@@ -76,25 +70,7 @@ export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           ))}
         </nav>
 
-        <div className="mt-8 border-t border-orange-100 pt-6">
-          <p className="px-4 text-xs font-black uppercase tracking-[0.22em] text-[#f27128]">
-            {t('nav.categories') as string}
-          </p>
-
-          <div className="mt-3 space-y-1">
-            {categories.map((item) => (
-              <NavLink
-                key={item.key}
-                to={item.to}
-                onClick={onClose}
-                className="flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-orange-50 hover:text-[#f27128]"
-              >
-                <span>{item.icon}</span>
-                <span>{t(item.key) as string}</span>
-              </NavLink>
-            ))}
-          </div>
-        </div>
+       
 
         <div className="mt-auto rounded-[1.5rem] border border-orange-100 bg-[#fffaf6] p-4">
           <p className="text-sm font-black text-slate-900">Pickup only</p>

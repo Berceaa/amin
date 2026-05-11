@@ -10,7 +10,7 @@ import { useI18n } from '../context/I18nContext';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
-const categoryKeys = ['dogs', 'cats', 'smallPets', 'fish', 'birds'] as const;
+
 
 export default function Layout() {
   const { t } = useI18n();
@@ -105,23 +105,7 @@ export default function Layout() {
           </div>
         </div>
 
-        <div className="border-t border-orange-100 bg-[#fffaf6]">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 lg:px-6">
-            <span className="mr-2 text-xs font-bold uppercase tracking-[0.18em] text-[#f27128]">
-              {t('nav.categories') as string}
-            </span>
 
-            {categoryKeys.map((item) => (
-              <Link
-                key={item}
-                to={`/products?category=${encodeURIComponent(t(`nav.${item}`) as string)}`}
-                className="page-link wag-hover rounded-full border border-orange-100 bg-white px-3 py-1.5 text-sm text-slate-700 transition hover:border-orange-300 hover:text-[#f27128]"
-              >
-                {t(`nav.${item}`) as string}
-              </Link>
-            ))}
-          </div>
-        </div>
       </header>
 
       <main className="relative isolate overflow-hidden">
