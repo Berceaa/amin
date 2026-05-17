@@ -34,7 +34,10 @@ export default function Layout() {
       return;
     }
 
-    navigate(`/products?search=${encodeURIComponent(value)}`);
+    navigate({
+      pathname: '/products',
+      search: `?search=${encodeURIComponent(value)}`,
+    });
   };
 
   return (

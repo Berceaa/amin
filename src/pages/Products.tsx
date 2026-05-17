@@ -34,14 +34,10 @@ export default function ProductsPage() {
   const allCategory = t('productsPage.all') as string;
   const allSubcategories = allSubcategoryLabels[language];
 
-  const initialCategory = searchParams.get('category') ?? allCategory;
-  const initialSearch = searchParams.get('search') ?? '';
-  const initialSubCategory = searchParams.get('subcategory') ?? allSubcategories;
-
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [selectedSubCategory, setSelectedSubCategory] = useState(initialSubCategory);
-  const [query, setQuery] = useState(initialSearch);
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') ?? allCategory);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(searchParams.get('subcategory') ?? allSubcategories);
+  const [query, setQuery] = useState(searchParams.get('search') ?? '');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -80,13 +76,13 @@ export default function ProductsPage() {
   );
 
   const subCategories = useMemo(() => {
-    const sourceProducts =
+    const source =
         selectedCategory === allCategory
             ? products
             : products.filter((product) => product.category === selectedCategory);
 
     const values = Array.from(
-        new Set(sourceProducts.map((product) => product.subCategory).filter(Boolean)),
+        new Set(source.map((product) => product.subCategory).filter(Boolean)),
     ).sort();
 
     return [allSubcategories, ...values];
@@ -127,9 +123,13 @@ export default function ProductsPage() {
         selectedSubCategory === allSubcategories ||
         selectedSubCategory === product.subCategory;
 
-    const queryMatches = `${product.title} ${product.description} ${product.subCategory} ${product.productCode}`
-        .toLowerCase()
-        .includes(query.toLowerCase());
+    const queryValue = query.trim().toLowerCase();
+
+    const queryMatches =
+        !queryValue ||
+        `${product.title} ${product.description} ${product.subCategory} ${product.productCode} ${product.tag}`
+            .toLowerCase()
+            .includes(queryValue);
 
     return categoryMatches && subCategoryMatches && queryMatches;
   });
@@ -278,11 +278,10 @@ export default function ProductsPage() {
 
                           <button
                               type="button"
-                              disabled={product.stock <= 0}
                               onClick={() => addToCart(product)}
-                              className="page-link paw-button premium-cta rounded-full bg-[#f27128] px-4 py-2 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50"
+                              className="page-link paw-button premium-cta rounded-full bg-[#f27128] px-4 py-2 text-sm font-semibold text-white"
                           >
-                            {product.stock > 0 ? (t('productsPage.addToCart') as string) : 'Unavailable'}
+                            {t('productsPage.addToCart') as string}
                           </button>
                         </div>
                       </div>
