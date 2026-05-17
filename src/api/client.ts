@@ -2,6 +2,7 @@ export type BackendProduct = {
     productId: number;
     productCode: string;
     productName: string;
+    description?: string | null;
     imageUrl: string;
     price: number;
     stock: number;
@@ -98,6 +99,15 @@ function normalizeImageUrl(imageUrl?: string | null) {
     return `/api${cleanPath}`;
 }
 
+export function formatSubCategory(value?: string | null) {
+    if (!value) return 'General';
+
+    return value
+        .replaceAll('_', ' ')
+        .toLowerCase()
+        .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 async function request<T>(url: string, options: RequestInit = {}): Promise<T> {
     const response = await fetch(`${API_BASE}${url}`, {
         ...options,
@@ -124,6 +134,7 @@ export function mapProduct(product: BackendProduct): FrontendProduct {
     };
 
     const subCategory = product.productSubCategory || '';
+    const formattedSubCategory = formatSubCategory(subCategory);
 
     return {
         id: product.productId,
@@ -133,9 +144,9 @@ export function mapProduct(product: BackendProduct): FrontendProduct {
         subCategory,
         price: `${Number(product.price).toFixed(2)} lei`,
         priceValue: Number(product.price),
-        description: subCategory.replaceAll('_', ' ').toLowerCase(),
+        description: product.description?.trim() || formattedSubCategory,
         image: normalizeImageUrl(product.imageUrl),
-        tag: subCategory.replaceAll('_', ' '),
+        tag: formattedSubCategory,
         stock: product.stock,
     };
 }
@@ -149,6 +160,8 @@ export function mapCart(cart: BackendCart) {
 
 export const api = {
     getProducts: () => request<BackendProduct[]>('/products'),
+
+    getProduct: (productId: number) => request<BackendProduct>(`/products/${productId}`),
 
     login: (email: string, password: string) =>
         request<AuthUser>('/auth/login', {

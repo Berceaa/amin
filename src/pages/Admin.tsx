@@ -7,6 +7,7 @@ type ProductForm = Omit<BackendProduct, 'productId'>;
 const emptyForm: ProductForm = {
     productCode: '',
     productName: '',
+    description: '',
     imageUrl: '',
     price: 0,
     stock: 10,
@@ -96,11 +97,16 @@ export default function AdminPage() {
         setError('');
 
         try {
+            const payload: ProductForm = {
+                ...form,
+                description: form.description?.trim() || '',
+            };
+
             if (editingId) {
-                await api.updateProduct(editingId, form);
+                await api.updateProduct(editingId, payload);
                 setMessage('Product updated successfully.');
             } else {
-                await api.createProduct(form);
+                await api.createProduct(payload);
                 setMessage('Product created successfully.');
             }
 
@@ -117,6 +123,7 @@ export default function AdminPage() {
         setForm({
             productCode: product.productCode,
             productName: product.productName,
+            description: product.description || '',
             imageUrl: product.imageUrl,
             price: product.price,
             stock: product.stock,
@@ -237,6 +244,22 @@ export default function AdminPage() {
                         </select>
                     </label>
 
+                    <label className="block text-sm font-semibold text-slate-800 md:col-span-2">
+                        <span className="mb-2 block">Description</span>
+                        <textarea
+                            value={form.description || ''}
+                            onChange={(event) =>
+                                setForm((current) => ({
+                                    ...current,
+                                    description: event.target.value,
+                                }))
+                            }
+                            rows={5}
+                            placeholder="Add a public product description for the product detail page."
+                            className="w-full rounded-[1.5rem] border border-orange-100 bg-[#fffaf6] px-4 py-3 text-sm outline-none focus:border-orange-300"
+                        />
+                    </label>
+
                     <div className="flex gap-3 md:col-span-2">
                         <button
                             type="submit"
@@ -265,11 +288,12 @@ export default function AdminPage() {
                 <h2 className="text-2xl font-black text-slate-900">Products</h2>
 
                 <div className="mt-6 overflow-x-auto">
-                    <table className="w-full min-w-[900px] text-left text-sm">
+                    <table className="w-full min-w-[1100px] text-left text-sm">
                         <thead>
                         <tr className="border-b border-orange-100 text-xs uppercase tracking-[0.15em] text-slate-400">
                             <th className="py-3">Code</th>
                             <th className="py-3">Name</th>
+                            <th className="py-3">Description</th>
                             <th className="py-3">Category</th>
                             <th className="py-3">Subcategory</th>
                             <th className="py-3">Price</th>
@@ -283,6 +307,9 @@ export default function AdminPage() {
                             <tr key={product.productId} className="border-b border-orange-50">
                                 <td className="py-3 font-semibold">{product.productCode}</td>
                                 <td className="py-3">{product.productName}</td>
+                                <td className="max-w-[260px] truncate py-3 text-slate-500">
+                                    {product.description || '-'}
+                                </td>
                                 <td className="py-3">{product.productCategory}</td>
                                 <td className="py-3">{product.productSubCategory}</td>
                                 <td className="py-3">{product.price.toFixed(2)} lei</td>
