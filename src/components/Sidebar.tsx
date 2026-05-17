@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import { useI18n } from '../context/I18nContext';
@@ -10,8 +12,6 @@ const items = [
   { to: '/contact-us', key: 'nav.contactUs', icon: '☎️' },
 ];
 
-
-
 type SidebarProps = {
   isOpen?: boolean;
   onClose?: () => void;
@@ -19,34 +19,58 @@ type SidebarProps = {
 
 export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const { t } = useI18n();
+  const [mounted, setMounted] = useState(false);
 
-  return (
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  if (!mounted) {
+    return null;
+  }
+
+  return createPortal(
     <>
       <button
         type="button"
         onClick={onClose}
         aria-label="Close navigation overlay"
-        className={`fixed inset-0 z-40 bg-slate-950/45 backdrop-blur-sm transition-opacity lg:hidden ${
+        className={`fixed inset-0 z-[9998] bg-slate-950/45 backdrop-blur-sm transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
       />
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[min(18rem,calc(100vw-2rem))] flex-col border-r border-orange-100 bg-white/95 px-5 py-6 shadow-[18px_0_45px_rgba(15,23,42,0.12)] transition-transform duration-300 lg:w-72 lg:translate-x-0 ${
+        className={`fixed left-0 top-0 z-[9999] flex h-screen w-[280px] max-w-[calc(100vw-2rem)] flex-col border-r border-orange-300 bg-[#f27128] px-5 py-6 text-white shadow-[18px_0_45px_rgba(15,23,42,0.18)] transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between gap-3 rounded-[1.5rem] bg-orange-50 px-4 py-4">
+        <div className="flex items-center justify-between gap-3 rounded-[1.5rem] bg-white/15 px-4 py-4">
           <img src={logo} alt="Pawsentials" className="h-10 w-auto" />
 
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close menu"
-            className="rounded-full border border-orange-100 bg-white px-3 py-2 text-sm font-black text-slate-700 transition hover:border-orange-300 hover:text-[#f27128] lg:hidden"
-          >
-            ✕
-          </button>
+          {isOpen && (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close menu"
+              className="rounded-full border border-white/30 bg-white px-3 py-2 text-sm font-black text-[#f27128] transition hover:bg-orange-50"
+            >
+              ✕
+            </button>
+          )}
         </div>
 
         <nav className="mt-8 space-y-2">
@@ -57,28 +81,36 @@ export default function Sidebar({ isOpen = false, onClose }: SidebarProps) {
               end={item.to === '/'}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold transition ${
+                `flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-black transition ${
                   isActive
-                    ? 'bg-[#f27128] text-white shadow-[0_12px_26px_rgba(242,113,40,0.22)]'
-                    : 'text-slate-700 hover:bg-orange-50 hover:text-[#f27128]'
+                    ? '!bg-white !text-[#f27128] shadow-[0_12px_26px_rgba(15,23,42,0.18)]'
+                    : '!text-white hover:bg-white/15'
                 }`
               }
             >
-              <span className="text-lg">{item.icon}</span>
-              <span>{t(item.key) as string}</span>
+              {({ isActive }) => (
+                <>
+                  <span className={`text-lg ${isActive ? 'text-[#f27128]' : 'text-white'}`}>
+                    {item.icon}
+                  </span>
+
+                  <span className={`${isActive ? 'text-[#f27128]' : 'text-white'}`}>
+                    {t(item.key) as string}
+                  </span>
+                </>
+              )}
             </NavLink>
           ))}
         </nav>
 
-
-
-        <div className="mt-auto rounded-[1.5rem] border border-orange-100 bg-[#fffaf6] p-4">
-          <p className="text-sm font-black text-slate-900">Pickup only</p>
-          <p className="mt-1 text-xs leading-5 text-slate-500">
+        <div className="mt-auto rounded-[1.5rem] border border-white/20 bg-white/15 p-4">
+          <p className="text-sm font-black text-white">Pickup only</p>
+          <p className="mt-1 text-xs leading-5 text-orange-50">
             Online order, fast in-store pickup.
           </p>
         </div>
       </aside>
-    </>
+    </>,
+    document.body,
   );
 }

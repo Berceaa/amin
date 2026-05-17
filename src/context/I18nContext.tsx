@@ -13,9 +13,9 @@ type I18nContextValue = {
 
 const translations: Record<Language, TranslationTree> = {
   ro: {
-    promo: 'Comenzi cu ridicare din magazin • Confirmare rapidă • Oferte recurente',
+    promo: 'Distribuitor en-gros pentru produse de animale • Comandă minimă 300 RON • Ridicare rapidă sau livrare la cerere',
     nav: {
-      search: 'Caută produse, branduri sau servicii',
+      search: 'Caută produse pentru câini și pisici',
       deals: 'Oferte',
       services: 'Servicii',
       products: 'Produse',
@@ -27,54 +27,54 @@ const translations: Record<Language, TranslationTree> = {
       fish: 'Pești',
       birds: 'Păsări',
       allProducts: 'Toate produsele',
-      shopNow: 'Vezi magazinul',
+      shopNow: 'Vezi produsele',
       login: 'Autentificare',
       register: 'Înregistrare',
       account: 'Contul meu',
       logout: 'Ieșire',
     },
     hero: {
-      eyebrow: 'Magazin premium pentru animale',
-      title: 'Bine ați venit la Pawsentials, furnizorul dumneavoastră profesionist en-gros pentru produse esențiale destinate animalelor de companie, specializat într-o gamă variată de produse de zi cu zi pentru câini și pisici — inclusiv jucării, accesorii, hamuri, lese, produse pentru hrănire și hidratare, îmbrăcăminte și culcușuri — concepute pentru a ajuta afacerea dumneavoastră să ofere calitate, grijă și confort fiecărui proprietar de animale de companie.',
+      eyebrow: 'Furnizor en-gros pentru pet shop-uri',
+      title: 'Produse en-gros pentru câini și pisici, pregătite pentru afacerea ta.',
       description:
-        '',
-      primary: 'Cumpără acum',
-      secondary: 'Programează o vizită',
-      stats: ['200+ produse', 'Pickup rapid', 'Suport 7 zile'],
+        'Pawsentials oferă produse pentru animale de companie destinate revânzării: jucării, accesorii, lese, hamuri, boluri, produse pentru hrănire, îmbrăcăminte, culcușuri și articole de zi cu zi pentru câini și pisici. Comandă online, verifică stocurile rapid și ridică produsele din magazin sau solicită livrare la cerere.',
+      primary: 'Vezi produsele',
+      secondary: 'Contactează-ne',
+      stats: ['Comandă minimă 300 RON', 'Produse pentru câini și pisici', 'Ridicare rapidă'],
       cards: {
-        delivery: 'Pickup în aceeași zi',
-        repeat: 'Reduceri la comenzi recurente',
-        wellness: 'Consultanță pentru wellness',
+        delivery: 'Ridicare din magazin',
+        repeat: 'Potrivit pentru revânzare',
+        wellness: 'Suport pentru comenzi',
       },
     },
     sections: {
-      featured: 'Categorii populare',
-      featuredDesc: 'Structură de homepage cu acces rapid către gamele cele mai căutate.',
-      services: 'Servicii pentru îngrijire completă',
-      servicesDesc: 'Am păstrat ideea de servicii și membership din site-urile mari de pet retail.',
+      featured: 'Categorii principale',
+      featuredDesc: 'Alege rapid gamele potrivite pentru magazinul sau afacerea ta.',
+      services: 'De ce să lucrezi cu noi',
+      servicesDesc: 'Proces simplu de comandă, stocuri ușor de verificat și suport pentru clienți business.',
       products: 'Produse recomandate',
-      productsDesc: 'Carduri curate, portocaliu păstrat și call-to-action clar.',
-      membership: 'Pawsentials Care+',
-      membershipDesc: 'Program de loialitate propriu, fără integrare Google Translate și cu limbă schimbată nativ în interfață.',
-      contact: 'Ai nevoie de ajutor?',
-      contactDesc: 'Suntem aici pentru recomandări, stocuri și comenzi speciale.',
+      productsDesc: 'Articole populare pentru câini și pisici, pregătite pentru comenzi en-gros.',
+      membership: 'Avantaje pentru clienți business',
+      membershipDesc: 'Soluții simple pentru comenzi recurente, aprovizionare constantă și comunicare rapidă.',
+      contact: 'Ai nevoie de ofertă sau detalii?',
+      contactDesc: 'Contactează-ne pentru informații despre produse, stocuri, comenzi en-gros sau livrare.',
     },
     cards: {
       featured: [
-        { title: 'Hrană pentru câini', text: 'Rețete premium, gustări și vitamine.' },
-        { title: 'Pisici & indoor living', text: 'Nisip, ansambluri, jucării și boluri.' },
-        { title: 'Acvaristică', text: 'Filtre, hrană, decor și kituri de start.' },
-        { title: 'Păsări & rozătoare', text: 'Cuști, accesorii și hrană echilibrată.' },
+        { title: 'Produse pentru câini', text: 'Jucării, lese, hamuri, boluri, culcușuri și accesorii.' },
+        { title: 'Produse pentru pisici', text: 'Jucării, accesorii, articole de îngrijire și produse de zi cu zi.' },
+        { title: 'Accesorii practice', text: 'Produse utile pentru magazine, saloane, distribuitori și revânzători.' },
+        { title: 'Articole pentru revânzare', text: 'Gamă variată de produse potrivite pentru clienți business.' },
       ],
       services: [
-        { title: 'Grooming', text: 'Băi, tuns și îngrijire premium.' },
-        { title: 'Nutriție', text: 'Recomandări pentru vârstă și rasă.' },
-        { title: 'Ridicare din magazin', text: 'Rezervi online, ridici rapid.' },
+        { title: 'Comenzi en-gros', text: 'Platformă dedicată comenzilor business, cu valoare minimă de 300 RON.' },
+        { title: 'Ridicare rapidă', text: 'Plasezi comanda online, iar echipa pregătește produsele pentru ridicare.' },
+        { title: 'Livrare la cerere', text: 'Livrarea poate fi discutată separat, în funcție de comandă și locație.' },
       ],
       membership: [
-        '10% reducere la hrană selectată',
-        'Puncte bonus la fiecare comandă',
-        'Acces prioritar la promoții și servicii',
+        'Acces rapid la produse pentru câini și pisici',
+        'Comenzi potrivite pentru revânzători și persoane juridice',
+        'Suport pentru stocuri, disponibilitate și comenzi recurente',
       ],
     },
     productsPage: {
@@ -195,16 +195,17 @@ const translations: Record<Language, TranslationTree> = {
       fixFormErrors: 'Corectează câmpurile marcate înainte de a continua.',
     },
     footer: {
-      blurb: 'Experiență modernă pentru un pet shop local, cu accent pe navigație, promoții și multilingv nativ.',
+      blurb: 'Furnizor en-gros de produse pentru animale, cu focus pe comenzi business, aprovizionare rapidă și suport pentru clienți.',
       quickLinks: 'Linkuri rapide',
       help: 'Ajutor',
       rights: 'Toate drepturile rezervate.',
     },
   },
+
   en: {
-    promo: 'Pickup-only orders • Fast confirmation • Repeat order deals',
+    promo: 'Wholesale supplier for pet products • Minimum order 300 RON • Fast pickup or shipping on request',
     nav: {
-      search: 'Search products, brands, or services',
+      search: 'Search dog and cat products',
       deals: 'Deals',
       services: 'Services',
       products: 'Products',
@@ -216,54 +217,54 @@ const translations: Record<Language, TranslationTree> = {
       fish: 'Fish',
       birds: 'Birds',
       allProducts: 'All products',
-      shopNow: 'Shop now',
+      shopNow: 'View products',
       login: 'Login',
       register: 'Register',
       account: 'My account',
       logout: 'Logout',
     },
     hero: {
-      eyebrow: 'Premium pet store',
-      title: 'Welcome to Pawsentials, your professional wholesale supplier for pet essentials, specializing in a wide range of everyday products for dogs and cats—including toys, accessories, harness, leashes, feeding and watering supplies, clothing, and bedding—designed to help your business offer quality, care, and convenience to every pet owner.',
+      eyebrow: 'Wholesale supplier for pet shops',
+      title: 'Wholesale dog and cat products, ready for your business.',
       description:
-        '',
-      primary: 'Shop now',
-      secondary: 'Book a visit',
-      stats: ['200+ products', 'Fast pickup', 'Support 7 days'],
+        'Pawsentials supplies pet products for resale, including toys, accessories, leashes, harnesses, bowls, feeding items, clothing, beds, and everyday essentials for dogs and cats. Order online, check products quickly, and choose in-store pickup or shipping upon request.',
+      primary: 'View products',
+      secondary: 'Contact us',
+      stats: ['Minimum order 300 RON', 'Dog and cat products', 'Fast pickup'],
       cards: {
-        delivery: 'Same-day pickup',
-        repeat: 'Savings on repeat orders',
-        wellness: 'Wellness guidance',
+        delivery: 'In-store pickup',
+        repeat: 'Made for resale',
+        wellness: 'Order support',
       },
     },
     sections: {
-      featured: 'Popular categories',
-      featuredDesc: 'Homepage structure with fast access to best-selling departments.',
-      services: 'Services for full pet care',
-      servicesDesc: 'I kept the service and membership feel seen on major pet retail sites.',
+      featured: 'Main categories',
+      featuredDesc: 'Quick access to the product ranges your store or business needs.',
+      services: 'Why work with us',
+      servicesDesc: 'Simple ordering, easy product access, and support for business customers.',
       products: 'Recommended products',
-      productsDesc: 'Clean cards, preserved orange branding, and clear calls to action.',
-      membership: 'Pawsentials Care+',
-      membershipDesc: 'Native multilingual switching, with no Google Translate extension involved.',
-      contact: 'Need help?',
-      contactDesc: 'We can help with recommendations, stock questions, and special orders.',
+      productsDesc: 'Popular dog and cat items prepared for wholesale orders.',
+      membership: 'Benefits for business customers',
+      membershipDesc: 'Simple solutions for repeat orders, regular supply, and fast communication.',
+      contact: 'Need an offer or more details?',
+      contactDesc: 'Contact us for product information, stock availability, wholesale orders, or shipping details.',
     },
     cards: {
       featured: [
-        { title: 'Dog food', text: 'Premium recipes, treats, and vitamins.' },
-        { title: 'Cats & indoor living', text: 'Litter, trees, toys, and feeding gear.' },
-        { title: 'Aquatics', text: 'Filters, food, décor, and starter kits.' },
-        { title: 'Birds & small animals', text: 'Cages, accessories, and balanced food.' },
+        { title: 'Dog products', text: 'Toys, leashes, harnesses, bowls, beds, and accessories.' },
+        { title: 'Cat products', text: 'Toys, accessories, care items, and everyday essentials.' },
+        { title: 'Practical accessories', text: 'Useful items for stores, groomers, distributors, and resellers.' },
+        { title: 'Products for resale', text: 'A varied range of items suitable for business customers.' },
       ],
       services: [
-        { title: 'Grooming', text: 'Baths, trims, and premium care.' },
-        { title: 'Nutrition', text: 'Age and breed-based recommendations.' },
-        { title: 'Store pickup', text: 'Reserve online and collect fast.' },
+        { title: 'Wholesale orders', text: 'Business-focused ordering with a minimum order value of 300 RON.' },
+        { title: 'Fast pickup', text: 'Place the order online and our team prepares the products for pickup.' },
+        { title: 'Shipping on request', text: 'Shipping can be discussed separately depending on the order and location.' },
       ],
       membership: [
-        '10% off selected food',
-        'Bonus points on every order',
-        'Priority access to promotions and services',
+        'Fast access to dog and cat product ranges',
+        'Orders suitable for resellers and legal entities',
+        'Support for stock, availability, and repeat orders',
       ],
     },
     productsPage: {
@@ -384,16 +385,17 @@ const translations: Record<Language, TranslationTree> = {
       fixFormErrors: 'Please fix the highlighted fields before continuing.',
     },
     footer: {
-      blurb: 'A modern experience for a local pet shop, focused on navigation, offers, and native multilingual support.',
+      blurb: 'A wholesale pet product supplier focused on business orders, fast product access, and reliable support.',
       quickLinks: 'Quick links',
       help: 'Help',
       rights: 'All rights reserved.',
     },
   },
+
   pl: {
-    promo: 'Zamówienia tylko z odbiorem osobistym • Szybkie potwierdzenie • Oferty cykliczne',
+    promo: 'Hurtowy dostawca produktów dla zwierząt • Minimalne zamówienie 300 RON • Szybki odbiór lub wysyłka na życzenie',
     nav: {
-      search: 'Szukaj produktów, marek lub usług',
+      search: 'Szukaj produktów dla psów i kotów',
       deals: 'Promocje',
       services: 'Usługi',
       products: 'Produkty',
@@ -405,54 +407,54 @@ const translations: Record<Language, TranslationTree> = {
       fish: 'Ryby',
       birds: 'Ptaki',
       allProducts: 'Wszystkie produkty',
-      shopNow: 'Kup teraz',
+      shopNow: 'Zobacz produkty',
       login: 'Logowanie',
       register: 'Rejestracja',
       account: 'Moje konto',
       logout: 'Wyloguj',
     },
     hero: {
-      eyebrow: 'Premium sklep zoologiczny',
-      title: 'Witamy w Pawsentials — profesjonalnym hurtowym dostawcy artykułów dla zwierząt, specjalizującym się w szerokiej gamie codziennych produktów dla psów i kotów, w tym zabawek, akcesoriów, szelek, smyczy, artykułów do karmienia i pojenia, odzieży oraz legowisk — zaprojektowanych tak, aby pomóc Twojej firmie oferować jakość, troskę i wygodę każdemu właścicielowi zwierzęcia.',
+      eyebrow: 'Hurtowy dostawca dla sklepów zoologicznych',
+      title: 'Hurtowe produkty dla psów i kotów, gotowe dla Twojego biznesu.',
       description:
-        '',
-      primary: 'Kup teraz',
-      secondary: 'Umów wizytę',
-      stats: ['200+ produktów', 'Szybki odbiór', 'Wsparcie 7 dni'],
+        'Pawsentials dostarcza produkty zoologiczne przeznaczone do dalszej sprzedaży, w tym zabawki, akcesoria, smycze, szelki, miski, artykuły do karmienia, ubranka, legowiska oraz codzienne produkty dla psów i kotów. Zamawiaj online, szybko sprawdzaj produkty i wybierz odbiór w sklepie lub wysyłkę na życzenie.',
+      primary: 'Zobacz produkty',
+      secondary: 'Skontaktuj się',
+      stats: ['Minimalne zamówienie 300 RON', 'Produkty dla psów i kotów', 'Szybki odbiór'],
       cards: {
-        delivery: 'Odbiór tego samego dnia',
-        repeat: 'Zniżki przy zamówieniach cyklicznych',
-        wellness: 'Wsparcie wellness',
+        delivery: 'Odbiór w sklepie',
+        repeat: 'Do dalszej sprzedaży',
+        wellness: 'Wsparcie zamówień',
       },
     },
     sections: {
-      featured: 'Popularne kategorie',
-      featuredDesc: 'Struktura strony głównej z szybkim dostępem do najczęściej kupowanych działów.',
-      services: 'Usługi dla pełnej opieki',
-      servicesDesc: 'Zachowałem klimat usług i membership znany z dużych sklepów zoologicznych.',
+      featured: 'Główne kategorie',
+      featuredDesc: 'Szybki dostęp do asortymentu potrzebnego Twojemu sklepowi lub firmie.',
+      services: 'Dlaczego warto z nami współpracować',
+      servicesDesc: 'Prosty proces zamawiania, łatwy dostęp do produktów i wsparcie dla klientów biznesowych.',
       products: 'Polecane produkty',
-      productsDesc: 'Czyste karty, zachowany pomarańczowy branding i czytelne CTA.',
-      membership: 'Pawsentials Care+',
-      membershipDesc: 'Natywna zmiana języka, bez rozszerzenia Google Translate.',
-      contact: 'Potrzebujesz pomocy?',
-      contactDesc: 'Pomożemy z rekomendacjami, stanami magazynowymi i zamówieniami specjalnymi.',
+      productsDesc: 'Popularne produkty dla psów i kotów przygotowane pod zamówienia hurtowe.',
+      membership: 'Korzyści dla klientów biznesowych',
+      membershipDesc: 'Proste rozwiązania dla zamówień cyklicznych, regularnego zaopatrzenia i szybkiej komunikacji.',
+      contact: 'Potrzebujesz oferty lub szczegółów?',
+      contactDesc: 'Skontaktuj się z nami w sprawie produktów, dostępności, zamówień hurtowych lub wysyłki.',
     },
     cards: {
       featured: [
-        { title: 'Karma dla psów', text: 'Premium receptury, przysmaki i witaminy.' },
-        { title: 'Koty & dom', text: 'Żwirek, drapaki, zabawki i miski.' },
-        { title: 'Akwarystyka', text: 'Filtry, karma, dekoracje i zestawy startowe.' },
-        { title: 'Ptaki i małe zwierzęta', text: 'Klatki, akcesoria i zbilansowana karma.' },
+        { title: 'Produkty dla psów', text: 'Zabawki, smycze, szelki, miski, legowiska i akcesoria.' },
+        { title: 'Produkty dla kotów', text: 'Zabawki, akcesoria, artykuły pielęgnacyjne i produkty codziennego użytku.' },
+        { title: 'Praktyczne akcesoria', text: 'Produkty dla sklepów, groomerów, dystrybutorów i sprzedawców.' },
+        { title: 'Artykuły do odsprzedaży', text: 'Szeroka gama produktów odpowiednia dla klientów biznesowych.' },
       ],
       services: [
-        { title: 'Grooming', text: 'Kąpiele, strzyżenie i premium care.' },
-        { title: 'Żywienie', text: 'Rekomendacje według wieku i rasy.' },
-        { title: 'Odbiór w sklepie', text: 'Rezerwujesz online, odbierasz szybko.' },
+        { title: 'Zamówienia hurtowe', text: 'Platforma dla klientów biznesowych z minimalną wartością zamówienia 300 RON.' },
+        { title: 'Szybki odbiór', text: 'Złóż zamówienie online, a nasz zespół przygotuje produkty do odbioru.' },
+        { title: 'Wysyłka na życzenie', text: 'Wysyłkę można ustalić osobno, w zależności od zamówienia i lokalizacji.' },
       ],
       membership: [
-        '10% zniżki na wybraną karmę',
-        'Punkty bonusowe za każde zamówienie',
-        'Priorytetowy dostęp do promocji i usług',
+        'Szybki dostęp do produktów dla psów i kotów',
+        'Zamówienia odpowiednie dla sprzedawców i firm',
+        'Wsparcie w zakresie stanów magazynowych, dostępności i zamówień cyklicznych',
       ],
     },
     productsPage: {
@@ -573,7 +575,7 @@ const translations: Record<Language, TranslationTree> = {
       fixFormErrors: 'Popraw zaznaczone pola przed kontynuowaniem.',
     },
     footer: {
-      blurb: 'Nowoczesne doświadczenie dla lokalnego pet shopu, z naciskiem na nawigację, promocje i natywną wielojęzyczność.',
+      blurb: 'Hurtowy dostawca produktów dla zwierząt, skupiony na zamówieniach biznesowych, szybkim dostępie do produktów i solidnym wsparciu.',
       quickLinks: 'Szybkie linki',
       help: 'Pomoc',
       rights: 'Wszelkie prawa zastrzeżone.',
@@ -581,10 +583,10 @@ const translations: Record<Language, TranslationTree> = {
   },
 
   zh: {
-    promo: '仅限到店自取订单 • 快速确认 • 常购优惠',
+    promo: '宠物用品批发供应商 • 最低订单 300 RON • 快速自取或按需配送',
     nav: {
       home: '首页',
-      search: '搜索产品、品牌或服务',
+      search: '搜索猫狗用品',
       deals: '优惠',
       services: '服务',
       products: '产品',
@@ -597,7 +599,7 @@ const translations: Record<Language, TranslationTree> = {
       fish: '鱼类',
       birds: '鸟类',
       allProducts: '全部产品',
-      shopNow: '立即选购',
+      shopNow: '查看产品',
       login: '登录',
       register: '注册',
       account: '我的账户',
@@ -606,39 +608,48 @@ const translations: Record<Language, TranslationTree> = {
       delivery: '运输与取货条件',
     },
     hero: {
-      eyebrow: '高端宠物商店',
-      title: '欢迎来到 Pawsentials，我们是专业的宠物用品批发供应商，专注于为猫狗提供各种日常必需品，包括玩具、配件、胸背带、牵引绳、喂食与饮水用品、宠物服饰以及宠物床具，旨在帮助您的企业为每一位宠物主人提供高品质、关怀与便利。',
-      description: '',
-      primary: '立即购买',
-      secondary: '预约到店',
-      stats: ['200+ 产品', '快速自取', '每周 7 天支持'],
-      cards: { delivery: '当日自取', repeat: '常购订单优惠', wellness: '健康护理建议' },
+      eyebrow: '面向宠物店的批发供应商',
+      title: '为您的业务提供猫狗用品批发采购。',
+      description:
+        'Pawsentials 提供适合转售的宠物用品，包括玩具、配件、牵引绳、胸背带、食盆、喂食用品、宠物服饰、宠物床以及猫狗日常用品。您可以在线下单，快速查看产品，并选择到店自取或按需安排配送。',
+      primary: '查看产品',
+      secondary: '联系我们',
+      stats: ['最低订单 300 RON', '猫狗用品', '快速自取'],
+      cards: {
+        delivery: '到店自取',
+        repeat: '适合转售',
+        wellness: '订单支持',
+      },
     },
     sections: {
-      featured: '热门分类',
-      featuredDesc: '首页结构让用户快速进入最常购买的产品线。',
-      services: '全方位宠物护理服务',
-      servicesDesc: '保留大型宠物零售网站中常见的服务和会员体验。',
+      featured: '主要分类',
+      featuredDesc: '快速进入您的商店或业务所需的产品系列。',
+      services: '为什么选择我们',
+      servicesDesc: '简单的下单流程、便捷的产品选择，以及面向企业客户的支持。',
       products: '推荐产品',
-      productsDesc: '简洁卡片、橙色品牌识别和清晰购买按钮。',
-      membership: 'Pawsentials Care+',
-      membershipDesc: '原生多语言切换，不使用 Google Translate 插件。',
-      contact: '需要帮助？',
-      contactDesc: '我们可以协助产品推荐、库存咨询和特殊订单。',
+      productsDesc: '适合批发订单的热门猫狗用品。',
+      membership: '企业客户优势',
+      membershipDesc: '为重复订单、稳定供货和快速沟通提供简单解决方案。',
+      contact: '需要报价或更多信息？',
+      contactDesc: '如需了解产品、库存、批发订单或配送详情，请联系我们。',
     },
     cards: {
       featured: [
-        { title: '狗粮与护理', text: '优质配方、零食和维生素。' },
-        { title: '猫咪与室内生活', text: '猫砂、猫爬架、玩具和喂食用品。' },
-        { title: '水族用品', text: '过滤器、鱼粮、装饰和入门套装。' },
-        { title: '鸟类与小宠物', text: '笼具、配件和均衡食品。' },
+        { title: '狗狗用品', text: '玩具、牵引绳、胸背带、食盆、宠物床和配件。' },
+        { title: '猫咪用品', text: '玩具、配件、护理用品和日常必需品。' },
+        { title: '实用配件', text: '适合宠物店、美容店、分销商和转售商的产品。' },
+        { title: '适合转售的产品', text: '丰富的产品系列，适合企业客户采购。' },
       ],
       services: [
-        { title: '美容护理', text: '洗护、修剪和专业护理。' },
-        { title: '营养建议', text: '根据年龄和品种给出推荐。' },
-        { title: '门店自取', text: '在线下单，快速到店取货。' },
+        { title: '批发订单', text: '面向企业客户的订购平台，最低订单金额为 300 RON。' },
+        { title: '快速自取', text: '在线下单后，我们的团队会准备好产品供您取货。' },
+        { title: '按需配送', text: '配送可根据订单和地点单独沟通安排。' },
       ],
-      membership: ['精选食品 10% 优惠', '每笔订单获得积分', '优先获得促销和服务权益'],
+      membership: [
+        '快速获取猫狗用品系列',
+        '适合转售商和法人实体的订单',
+        '支持库存、可用性和重复订单沟通',
+      ],
     },
     productsPage: {
       title: '所有分类产品',
@@ -758,14 +769,13 @@ const translations: Record<Language, TranslationTree> = {
       fixFormErrors: '请先修正标记的字段。',
     },
     footer: {
-      blurb: '为本地宠物店打造的现代体验，强调导航、促销和原生多语言。',
+      blurb: '面向企业订单的宠物用品批发供应商，提供快速产品访问和可靠支持。',
       quickLinks: '快速链接',
       help: '帮助',
       rights: '保留所有权利。',
     },
   },
 };
-
 
 const extraTranslations: Record<Language, TranslationTree> = {
   ro: {
@@ -779,7 +789,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       purchase: {
         title: 'Cum cumperi',
         intro:
-            'Cumpărarea de la Pawsentials este gândită să fie simplă și eficientă. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON. Începe prin a răsfoi produsele disponibile și a selecta articolele care se potrivesc cel mai bine nevoilor animalului tău, apoi adaugă-le în coș și verifică atent cantitățile. În continuare, autentifică-te în contul tău sau creează unul nou dacă nu ai deja. Când ești gata, completează detaliile pentru ridicare și plasează comanda prin checkout, unde poți alege metoda de plată preferată — transfer bancar sau numerar. După trimiterea comenzii, așteaptă confirmarea, apoi ridică produsele direct din magazin. Te rugăm să reții că comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată în checkout; totuși, livrarea poate fi aranjată la cererea clientului și trebuie menționată la plasarea comenzii.',
+          'Cumpărarea de la Pawsentials este gândită să fie simplă și eficientă. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON. Începe prin a răsfoi produsele disponibile și a selecta articolele care se potrivesc cel mai bine nevoilor animalului tău, apoi adaugă-le în coș și verifică atent cantitățile. În continuare, autentifică-te în contul tău sau creează unul nou dacă nu ai deja. Când ești gata, completează detaliile pentru ridicare și plasează comanda prin checkout, unde poți alege metoda de plată preferată — transfer bancar sau numerar. După trimiterea comenzii, așteaptă confirmarea, apoi ridică produsele direct din magazin. Te rugăm să reții că comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată în checkout; totuși, livrarea poate fi aranjată la cererea clientului și trebuie menționată la plasarea comenzii.',
         stepsTitle: 'Pașii de cumpărare',
         steps: [
           'Alege produsele potrivite pentru animalul tău.',
@@ -790,12 +800,12 @@ const extraTranslations: Record<Language, TranslationTree> = {
         ],
         noteTitle: 'Important',
         noteText:
-            'Comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată la checkout. Pentru întrebări sau asistență, contactează-ne prin WhatsApp sau telefon.',
+          'Comenzile sunt disponibile în principal pentru ridicare din magazin, confirmarea finală fiind realizată la checkout. Pentru întrebări sau asistență, contactează-ne prin WhatsApp sau telefon.',
       },
       delivery: {
         title: 'Transport și condiții de livrare',
         intro:
-            'Pawsentials funcționează în principal pe un model de ridicare din magazin, pentru a asigura procesarea mai rapidă a comenzilor și costuri mai reduse, iar livrarea poate fi aranjată la cerere dacă este specificată în momentul plasării comenzii. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON, iar platforma este destinată în principal persoanelor juridice. Clienții individuali pot plasa comenzi dacă îndeplinesc valoarea minimă a comenzii sau, alternativ, pot contacta unul dintre distribuitorii noștri. Pentru informații suplimentare, te rugăm să ne contactezi telefonic sau prin formularul de contact disponibil pe website.',
+          'Pawsentials funcționează în principal pe un model de ridicare din magazin, pentru a asigura procesarea mai rapidă a comenzilor și costuri mai reduse, iar livrarea poate fi aranjată la cerere dacă este specificată în momentul plasării comenzii. Fiind un business en-gros, valoarea minimă a comenzii pe site este de 300 RON, iar platforma este destinată în principal persoanelor juridice. Clienții individuali pot plasa comenzi dacă îndeplinesc valoarea minimă a comenzii sau, alternativ, pot contacta unul dintre distribuitorii noștri. Pentru informații suplimentare, te rugăm să ne contactezi telefonic sau prin formularul de contact disponibil pe website.',
         sections: [
           {
             title: 'Ridicare din magazin',
@@ -818,7 +828,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       contact: {
         title: 'Contactează-ne',
         intro:
-            'Ai întrebări despre produse, stocuri, comenzi sau colaborări? Echipa Pawsentials îți răspunde rapid.',
+          'Ai întrebări despre produse, stocuri, comenzi sau colaborări? Echipa Pawsentials îți răspunde rapid.',
         detailsTitle: 'Date de contact',
         formTitle: 'Trimite-ne un mesaj',
         email: 'Email',
@@ -842,7 +852,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       purchase: {
         title: 'How to purchase',
         intro:
-            'Purchasing from Pawsentials is designed to be simple and efficient. As a wholesale business, the minimum order value on the site is 300 RON. Start by browsing the available products and selecting the items that best suit your pet’s needs, then add them to your cart and review the quantities. Next, log in to your account or create a new one if you haven’t already. Once ready, complete your pickup details and place the order through the checkout process, where you can choose your preferred payment method — either bank wire or cash. After submitting your order, wait for confirmation, and then collect your items directly from the store. Please note that orders are primarily available for in-store pickup only, with final confirmation completed during checkout; however, a shipping service can be arranged upon customer request and should be noted when placing the order.',
+          'Purchasing from Pawsentials is designed to be simple and efficient. As a wholesale business, the minimum order value on the site is 300 RON. Start by browsing the available products and selecting the items that best suit your pet’s needs, then add them to your cart and review the quantities. Next, log in to your account or create a new one if you haven’t already. Once ready, complete your pickup details and place the order through the checkout process, where you can choose your preferred payment method — either bank wire or cash. After submitting your order, wait for confirmation, and then collect your items directly from the store. Please note that orders are primarily available for in-store pickup only, with final confirmation completed during checkout; however, a shipping service can be arranged upon customer request and should be noted when placing the order.',
         stepsTitle: 'Purchase steps',
         steps: [
           'Browse products and select the best items for your pet.',
@@ -853,12 +863,12 @@ const extraTranslations: Record<Language, TranslationTree> = {
         ],
         noteTitle: 'Important',
         noteText:
-            'Orders are primarily available for in-store pickup, with final confirmation completed at checkout. For any questions or assistance, please contact us via WhatsApp or phone.',
+          'Orders are primarily available for in-store pickup, with final confirmation completed at checkout. For any questions or assistance, please contact us via WhatsApp or phone.',
       },
       delivery: {
         title: 'Transport and delivery conditions',
         intro:
-            'Pawsentials operates primarily on a pickup model to ensure faster order processing and lower costs, while shipping can be arranged upon request if specified at the time of ordering. As a wholesale business, the minimum order value on the site is 300 RON, and the platform is mainly intended for legal entities. Individual customers may also place orders if they meet the minimum order requirement, or alternatively, they can contact one of our distributors. For further information, please reach out to us by phone or through the contact form available on our website.',
+          'Pawsentials operates primarily on a pickup model to ensure faster order processing and lower costs, while shipping can be arranged upon request if specified at the time of ordering. As a wholesale business, the minimum order value on the site is 300 RON, and the platform is mainly intended for legal entities. Individual customers may also place orders if they meet the minimum order requirement, or alternatively, they can contact one of our distributors. For further information, please reach out to us by phone or through the contact form available on our website.',
         sections: [
           {
             title: 'In-store Pickup',
@@ -881,7 +891,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       contact: {
         title: 'Contact Us',
         intro:
-            'Have questions about products, stock, orders, or partnerships? The Pawsentials team is ready to help.',
+          'Have questions about products, stock, orders, or partnerships? The Pawsentials team is ready to help.',
         detailsTitle: 'Contact details',
         formTitle: 'Send us a message',
         email: 'Email',
@@ -905,7 +915,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       purchase: {
         title: 'Jak kupić',
         intro:
-            'Zakupy w Pawsentials są proste i wygodne. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON. Zacznij od przejrzenia dostępnych produktów i wybierz artykuły najlepiej dopasowane do potrzeb Twojego pupila, następnie dodaj je do koszyka i sprawdź ilości. Kolejnym krokiem jest zalogowanie się na konto lub utworzenie nowego, jeśli jeszcze go nie posiadasz. Gdy wszystko będzie gotowe, uzupełnij dane odbioru i złóż zamówienie w procesie checkout, gdzie możesz wybrać preferowaną metodę płatności — przelew bankowy lub gotówkę. Po wysłaniu zamówienia poczekaj na potwierdzenie, a następnie odbierz produkty bezpośrednio ze sklepu. Pamiętaj, że zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się podczas checkout; jednak wysyłka może zostać zorganizowana na życzenie klienta i powinna zostać zaznaczona przy składaniu zamówienia.',
+          'Zakupy w Pawsentials są proste i wygodne. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON. Zacznij od przejrzenia dostępnych produktów i wybierz artykuły najlepiej dopasowane do potrzeb Twojego pupila, następnie dodaj je do koszyka i sprawdź ilości. Kolejnym krokiem jest zalogowanie się na konto lub utworzenie nowego, jeśli jeszcze go nie posiadasz. Gdy wszystko będzie gotowe, uzupełnij dane odbioru i złóż zamówienie w procesie checkout, gdzie możesz wybrać preferowaną metodę płatności — przelew bankowy lub gotówkę. Po wysłaniu zamówienia poczekaj na potwierdzenie, a następnie odbierz produkty bezpośrednio ze sklepu. Pamiętaj, że zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się podczas checkout; jednak wysyłka może zostać zorganizowana na życzenie klienta i powinna zostać zaznaczona przy składaniu zamówienia.',
         stepsTitle: 'Kroki zakupu',
         steps: [
           'Przeglądaj produkty i wybierz najlepsze artykuły dla swojego pupila.',
@@ -916,12 +926,12 @@ const extraTranslations: Record<Language, TranslationTree> = {
         ],
         noteTitle: 'Ważne',
         noteText:
-            'Zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się przy checkout. W razie pytań lub potrzeby pomocy skontaktuj się z nami przez WhatsApp lub telefon.',
+          'Zamówienia są przede wszystkim dostępne z odbiorem osobistym, a finalne potwierdzenie odbywa się przy checkout. W razie pytań lub potrzeby pomocy skontaktuj się z nami przez WhatsApp lub telefon.',
       },
       delivery: {
         title: 'Warunki transportu i odbioru',
         intro:
-            'Pawsentials działa głównie w modelu odbioru osobistego, aby zapewnić szybszą realizację zamówień i niższe koszty, natomiast wysyłka może zostać zorganizowana na życzenie, jeśli zostanie wskazana podczas składania zamówienia. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON, a platforma jest przeznaczona głównie dla podmiotów prawnych. Klienci indywidualni również mogą składać zamówienia, jeśli spełniają minimalny próg zamówienia, albo mogą skontaktować się z jednym z naszych dystrybutorów. W celu uzyskania dodatkowych informacji prosimy o kontakt telefoniczny lub przez formularz kontaktowy dostępny na naszej stronie.',
+          'Pawsentials działa głównie w modelu odbioru osobistego, aby zapewnić szybszą realizację zamówień i niższe koszty, natomiast wysyłka może zostać zorganizowana na życzenie, jeśli zostanie wskazana podczas składania zamówienia. Jako firma hurtowa wymagamy minimalnej wartości zamówienia na stronie w wysokości 300 RON, a platforma jest przeznaczona głównie dla podmiotów prawnych. Klienci indywidualni również mogą składać zamówienia, jeśli spełniają minimalny próg zamówienia, albo mogą skontaktować się z jednym z naszych dystrybutorów. W celu uzyskania dodatkowych informacji prosimy o kontakt telefoniczny lub przez formularz kontaktowy dostępny na naszej stronie.',
         sections: [
           {
             title: 'Odbiór w sklepie',
@@ -944,7 +954,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       contact: {
         title: 'Kontakt',
         intro:
-            'Masz pytania o produkty, stany magazynowe, zamówienia lub współpracę? Zespół Pawsentials chętnie pomoże.',
+          'Masz pytania o produkty, stany magazynowe, zamówienia lub współpracę? Zespół Pawsentials chętnie pomoże.',
         detailsTitle: 'Dane kontaktowe',
         formTitle: 'Wyślij wiadomość',
         email: 'Email',
@@ -968,7 +978,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       purchase: {
         title: '如何购买',
         intro:
-            '在 Pawsentials 购物的流程简单而高效。作为一家批发业务，本网站的最低订单金额为 300 RON。首先浏览可购买的产品，并选择最适合宠物需求的商品，然后将它们加入购物车并检查数量。接下来，登录你的账户；如果还没有账户，请先创建一个新账户。准备好后，填写取货信息并通过结账流程提交订单，在结账时你可以选择首选付款方式——银行转账或现金。提交订单后，请等待确认，然后直接到店领取商品。请注意，订单主要以到店自取为主，最终确认会在结账过程中完成；不过，如客户需要，也可以安排配送服务，并应在下单时备注说明。',
+          '在 Pawsentials 购物的流程简单而高效。作为一家批发业务，本网站的最低订单金额为 300 RON。首先浏览可购买的产品，并选择最适合宠物需求的商品，然后将它们加入购物车并检查数量。接下来，登录你的账户；如果还没有账户，请先创建一个新账户。准备好后，填写取货信息并通过结账流程提交订单，在结账时你可以选择首选付款方式——银行转账或现金。提交订单后，请等待确认，然后直接到店领取商品。请注意，订单主要以到店自取为主，最终确认会在结账过程中完成；不过，如客户需要，也可以安排配送服务，并应在下单时备注说明。',
         stepsTitle: '购买步骤',
         steps: [
           '浏览产品并选择最适合宠物的商品。',
@@ -979,12 +989,12 @@ const extraTranslations: Record<Language, TranslationTree> = {
         ],
         noteTitle: '重要说明',
         noteText:
-            '订单主要以到店自取为主，最终确认会在结账时完成。如有任何问题或需要帮助，请通过 WhatsApp 或电话联系我们。',
+          '订单主要以到店自取为主，最终确认会在结账时完成。如有任何问题或需要帮助，请通过 WhatsApp 或电话联系我们。',
       },
       delivery: {
         title: '运输与取货条件',
         intro:
-            'Pawsentials 主要采用到店自取模式，以确保订单处理更快并降低成本；如果客户在下单时注明需要配送，也可以根据要求安排发货。作为一家批发业务，本网站的最低订单金额为 300 RON，并且平台主要面向法人实体。个人客户如果满足最低订单金额要求，也可以下单；或者，他们可以联系我们的任一分销商。有关更多信息，请通过电话或我们网站上的联系表单与我们联系。',
+          'Pawsentials 主要采用到店自取模式，以确保订单处理更快并降低成本；如果客户在下单时注明需要配送，也可以根据要求安排发货。作为一家批发业务，本网站的最低订单金额为 300 RON，并且平台主要面向法人实体。个人客户如果满足最低订单金额要求，也可以下单；或者，他们可以联系我们的任一分销商。有关更多信息，请通过电话或我们网站上的联系表单与我们联系。',
         sections: [
           {
             title: '到店自取',
@@ -1007,7 +1017,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
       contact: {
         title: '联系我们',
         intro:
-            '有关产品、库存、订单或合作的问题，Pawsentials 团队随时为你提供帮助。',
+          '有关产品、库存、订单或合作的问题，Pawsentials 团队随时为你提供帮助。',
         detailsTitle: '联系方式',
         formTitle: '发送消息',
         email: '邮箱',
@@ -1020,6 +1030,7 @@ const extraTranslations: Record<Language, TranslationTree> = {
     },
   },
 };
+
 function deepMerge(base: TranslationTree, extra: TranslationTree): TranslationTree {
   const output: TranslationTree = { ...base };
   Object.entries(extra).forEach(([key, value]) => {

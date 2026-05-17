@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { useState, type FormEvent } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import LanguageSwitcher from './LanguageSwitcher';
 import CartDrawer from './CartDrawer';
@@ -10,79 +10,80 @@ import { useI18n } from '../context/I18nContext';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 
-
-
 export default function Layout() {
   const { t } = useI18n();
   const { itemCount, openCart } = useCart();
   const { user } = useAuth();
+
   const promo = t('promo') as string;
   const searchPlaceholder = t('nav.search') as string;
+
   const location = useLocation();
+  const navigate = useNavigate();
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const value = searchTerm.trim();
+
+    if (!value) {
+      navigate('/products');
+      return;
+    }
+
+    navigate(`/products?search=${encodeURIComponent(value)}`);
+  };
 
   return (
-    <div className="premium-shell min-h-screen bg-[#fffaf6] text-slate-900 lg:pl-72">
+    <div className="premium-shell min-h-screen bg-[#fffaf6] text-slate-900">
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      <div className="premium-promo bg-[#f27128] px-4 py-2 text-center text-sm font-medium text-white">
+      <div className="premium-promo bg-[#d95f1f] px-4 py-2 text-center text-sm font-medium text-white">
         {promo}
       </div>
 
-      <header className="sticky top-0 z-30 border-b border-orange-100 bg-white/85 backdrop-blur-xl shadow-[0_10px_30px_rgba(15,23,42,0.06)]">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-4 px-4 py-4 lg:px-6">
+      <header className="sticky top-0 z-30 border-b border-orange-300 bg-[#f27128] text-white shadow-[0_10px_30px_rgba(15,23,42,0.10)]">
+        <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-4 lg:px-6">
           <button
             type="button"
-            onClick={() => setIsSidebarOpen(true)}
-            aria-label="Open menu"
-            className="rounded-full border border-orange-200 bg-white px-3 py-2 text-xl shadow-sm transition hover:border-orange-300 hover:text-[#f27128] lg:hidden"
+            onClick={() => setIsSidebarOpen((current) => !current)}
+            aria-label="Toggle menu"
+            className="rounded-full border border-white/30 bg-white/15 px-3 py-2 text-xl text-white shadow-sm transition hover:bg-white/25"
           >
             ☰
           </button>
 
-          <Link to="/" className="premium-logo-glow wag-hover flex items-center gap-3">
-            <img src={logo} alt="Pawsentials" className="h-10 w-auto" />
-          </Link>
+          <form onSubmit={handleSearchSubmit} className="hidden min-w-[260px] flex-1 md:block">
+            <div className="flex items-center rounded-full border border-white/30 bg-white px-4 py-2.5 shadow-sm">
+              <span className="mr-2 text-[#f27128]">🔎</span>
 
-          <div className="hidden min-w-[220px] flex-1 lg:block">
-            <div className="premium-search rounded-full border border-orange-100 bg-[#fff7f1] px-4 py-3 text-sm text-slate-500 shadow-inner">
-              {searchPlaceholder}
+              <input
+                type="search"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder={searchPlaceholder}
+                className="w-full bg-transparent text-sm font-medium text-slate-800 outline-none placeholder:text-slate-400"
+              />
+
+              <button
+                type="submit"
+                className="ml-3 rounded-full bg-[#f27128] px-4 py-1.5 text-xs font-bold text-white transition hover:bg-[#d95f1f]"
+              >
+                Search
+              </button>
             </div>
-          </div>
+          </form>
 
-          <nav className="hidden items-center gap-2 lg:flex">
-            <NavLink className={navClassName} to="/products">
-              {t('nav.products') as string}
-            </NavLink>
-
-            <NavLink className={navClassName} to="/contact-us">
-              {t('nav.contactUs') as string}
-            </NavLink>
-
-            {user ? (
-              <NavLink className={navClassName} to="/login">
-                {t('nav.account') as string}
-              </NavLink>
-            ) : (
-              <>
-                <NavLink className={navClassName} to="/login">
-                  {t('nav.login') as string}
-                </NavLink>
-
-                <NavLink className={navClassName} to="/register">
-                  {t('nav.register') as string}
-                </NavLink>
-              </>
-            )}
-          </nav>
-
-          <div className="ml-auto flex items-center gap-3 lg:ml-0">
+          <div className="ml-auto flex items-center gap-3">
             <LanguageSwitcher />
 
             <button
               type="button"
               onClick={openCart}
-              className={`premium-icon-button relative rounded-full border border-orange-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 transition hover:border-orange-300 hover:text-[#f27128] ${
+              className={`relative rounded-full border border-white/30 bg-white px-4 py-3 text-sm font-bold !text-[#f27128] shadow-sm transition hover:bg-orange-50 hover:!text-[#d95f1f] ${
                 itemCount > 0 ? 'cart-bounce premium-glow-ring' : 'wag-hover'
               }`}
             >
@@ -90,22 +91,41 @@ export default function Layout() {
               {t('cart.title') as string}
 
               {itemCount > 0 && (
-                <span className="ml-2 inline-flex min-w-6 items-center justify-center rounded-full bg-[#f27128] px-1.5 py-0.5 text-xs font-bold text-white">
+                <span className="ml-2 inline-flex min-w-6 items-center justify-center rounded-full bg-[#f27128] px-1.5 py-0.5 text-xs font-bold text-white ring-2 ring-white">
                   {itemCount}
                 </span>
               )}
             </button>
 
             <Link
-              to={user ? '/checkout' : '/login'}
-              className="page-link paw-button premium-cta hidden rounded-full bg-[#f27128] px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(242,113,40,0.28)] transition hover:-translate-y-0.5 sm:inline-flex"
+              to="/login"
+              className="rounded-full border border-white/30 bg-white px-5 py-3 text-sm font-black !text-[#f27128] shadow-sm transition hover:bg-orange-50 hover:!text-[#d95f1f]"
             >
-              {user ? 'Checkout' : (t('nav.login') as string)}
+              {user ? (t('nav.account') as string) : (t('nav.login') as string)}
             </Link>
           </div>
         </div>
 
+        <form onSubmit={handleSearchSubmit} className="border-t border-white/20 px-4 pb-4 md:hidden">
+          <div className="flex items-center rounded-full border border-white/30 bg-white px-4 py-2.5 shadow-sm">
+            <span className="mr-2 text-[#f27128]">🔎</span>
 
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder={searchPlaceholder}
+              className="w-full bg-transparent text-sm font-medium text-slate-800 outline-none placeholder:text-slate-400"
+            />
+
+            <button
+              type="submit"
+              className="ml-3 rounded-full bg-[#f27128] px-4 py-1.5 text-xs font-bold text-white transition hover:bg-[#d95f1f]"
+            >
+              Search
+            </button>
+          </div>
+        </form>
       </header>
 
       <main className="relative isolate overflow-hidden">
@@ -136,15 +156,19 @@ export default function Layout() {
               <Link className="page-link wag-hover" to="/">
                 Home
               </Link>
+
               <Link className="page-link wag-hover" to="/products">
                 {t('nav.products') as string}
               </Link>
+
               <Link className="page-link wag-hover" to="/contact-us">
                 {t('nav.contactUs') as string}
               </Link>
+
               <Link className="page-link wag-hover" to="/login">
                 {t('nav.login') as string}
               </Link>
+
               <Link className="page-link wag-hover" to="/register">
                 {t('nav.register') as string}
               </Link>
@@ -157,11 +181,9 @@ export default function Layout() {
             </h3>
 
             <div className="mt-4 space-y-2 text-sm text-slate-600">
-              <p> E-mail: elworld9999@gmail.com </p>
-              <p>Phone number: 0787807731 </p>
-              <p>Address: Dragonul Rosu 7, Stand Nr.286 </p>
-              <p>Opening hours: Monday - Saturaday, 7am - 2pm </p>
-              <p>WhatsApp: 0787807731</p>
+              <p>elworld9999@gmail.com</p>
+              <p>+40 787 807 731</p>
+              <p>Dragonul Rosu 7, Stand Nr.286Bucharest, Romania</p>
             </div>
           </div>
         </div>
@@ -172,12 +194,4 @@ export default function Layout() {
       </footer>
     </div>
   );
-}
-
-function navClassName({ isActive }: { isActive: boolean }) {
-  return `rounded-full px-4 py-2 text-sm font-medium transition ${
-    isActive
-      ? 'bg-orange-50 text-[#f27128]'
-      : 'text-slate-700 hover:bg-orange-50 hover:text-[#f27128]'
-  }`;
 }
